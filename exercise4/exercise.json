@@ -1,0 +1,10 @@
+{
+    "id": 30,
+    "description": "Given 3 paths to text file, decode the message contained in the first file via the second file and save the decoded text in the third file, return the number of characters that could not be decoded",
+    "text": "Design and implement a function ex30(fname1,fname2,fname3) such that:\n    - it takes as arguments the paths of three text files\n    - it transforms the content of the 'fname1' file using an encoding\n      defined in the 'fname2' file and writes the result in the\n      'fname3' file\n    - it returns the number the number of characters decoded with the\n      symbol '?' and saved in the decoded 'fname3' file.\n    The first 'fname1' text file contains an encoded message where\n    each character was replaced by a three-digit integer. Any\n    non-numeric character was not encoded and should be reported as it\n    is in the 'fname3' file.\n    The second 'fname2' text file contains the characters-number\n    encoding of the characters in 'fname1'. The content of 'fname2'\n    file is organized in lines. Each line contains one character and\n    the three-digit integer that was used to encode that character in\n    'fname1', separated by at least one space.  Different numbers can\n    refer to the same character and not all the numbers that appear in\n    'fname1' eventually appear in the decoding 'fname2' file.  The\n    numbers not present in the second file should be decoded with the\n    '?' symbol and saved in the 'fname3' file.\n\n    Example: if the fname1 file contains the text\n             '991118991991345    103 091027003091103?' and\n             the fname2 file contains the text\n             'n   091\n   t 991\n a   103\n a 127\n n 003\n  u 118 ', then\n             the decoded message to be save in file3 will be:\n             'tutt? a n?nna?' and the function returns the value 2.",
+    "algorithm": "",
+    "tags": ["Files", "Strings"],
+    "effort": 2,
+    "clues": [],
+    "from": "recupero-15-2-18"
+}
