@@ -1,0 +1,10 @@
+{
+    "id": 54,
+    "description": "Given as input a list of integers and strings, delete the strings from the list and return a dictionary with keys the deleted strings.",
+    "text": "Design  a function ex54(mylist) such that:\n    - it receives as arguments a list containing integers and strings\n    - it modifies the list by deleting all the strings\n    - it returns a dictionary.\n    The function deletes from 'mylist' all the elements that are\n    strings and returns a dictionary where:\n    - the keys are the deleted strings\n    - the values are the number of times the related key-string was\n      deleted from 'mylist'.\nThe use of the library copy is allowed.\n\n    Example: if mylist=[1,'a',2,'b','a',8,'d',8], the function returns\n    the dictionary {'a':2,'b':1,'d':1} and the list becomes [1,2,8,8]\n",
+    "algorithm": "Initialize a dictionary diz \n for each item in the list copy \n\t if the item is a string \n\t\t remove the item from the list \n\t\t update the counter in the dictionary \n return the dictionary",
+    "tags": ["Dictionaries", "Lists"],
+    "effort": 2,
+    "clues": [],
+    "from": "recupero-23-1-18"
+}
