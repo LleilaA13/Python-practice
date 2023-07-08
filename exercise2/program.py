@@ -30,7 +30,7 @@ def es27(table, column, value):
 
     For example
     - if table = [{'name': 'Sophie', 'year': 1973 ,'tel': 5553546},
-                  {'name': 'Bruno', 'year': 1981 ,'tel': 5558432}]
+                {'name': 'Bruno', 'year': 1981 ,'tel': 5558432}]
 
     - the function call es27(table, 'year', 1981) returns the number 1
     and the table is modified in [{'name': 'Bruno','tel': 5558432}]

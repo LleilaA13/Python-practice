@@ -19,8 +19,8 @@ class Test(testlib.TestCase):
             - expectedTab   : expected modified table
         '''
         with self.ignored_function('builtins.print'), \
-             self.forbidden_function('os.walk'):
-             #self.timer(2):
+                self.forbidden_function('os.walk'):
+            # self.timer(2):
             result = program.es27(table, column, value)
         self.assertEqual(
             result, expected, f"The result must be {expected} instead of {result}")
@@ -29,9 +29,9 @@ class Test(testlib.TestCase):
 
     @data(
         ([{'C1': 2, 'C2': 1, 'C3': 'd'}, {'C1': 4, 'C2': 7, 'C3': 'a'}, {'C1': 6, 'C2': 1, 'C3': 'b'}, {
-         'C1': 8, 'C2': 3, 'C3': 'c'}], 'C2', 1, 2, [{'C1': 2, 'C3': 'd'}, {'C1': 6, 'C3': 'b'}]),
+        'C1': 8, 'C2': 3, 'C3': 'c'}], 'C2', 1, 2, [{'C1': 2, 'C3': 'd'}, {'C1': 6, 'C3': 'b'}]),
         ([{'C1': 2, 'C2': 1, 'C3': 'd'}, {'C1': 4, 'C2': 7, 'C3': 'a'}, {
-         'C1': 6, 'C2': 1, 'C3': 'b'}, {'C1': 8, 'C2': 3, 'C3': 'c'}], 'C1', 3, 4, [])
+        'C1': 6, 'C2': 1, 'C3': 'b'}, {'C1': 8, 'C2': 3, 'C3': 'c'}], 'C1', 3, 4, [])
     )
     @unpack
     def test(self, table, column, value, expected, expectedTab):
