@@ -1,0 +1,10 @@
+{
+    "id": 27,
+    "description": "Given a table, a table column name and a value, delete rows that have a different value for that column and delete the column, the number of rows deleted is returned",
+    "text": " \n    Implement the function es27(table, col, val) that takes as an input\n\n    - a table table represented by a list of dictionaries\n    - a string col with the name of one of the columns of the table\n    - a value val\n\n    and modifies the table removing the column col and deleting all\n    the rows with a value different from val in column col.  The\n    function returns the number of deleted rows.\n\n    For example\n    - if table = [{'name': 'Sophie', 'year': 1973 ,'tel': 5553546},\n                 {'name': 'Bruno', 'year': 1981 ,'tel': 5558432}]\n\n    - the function call es27(table, 'year', 1981) returns the number 1\n    and the table is modified in [{'name': 'Bruno','tel': 5558432}]\n\n",
+    "algorithm": "Build a new table, such that:\n\tadd the row if it has a column value equal to the input one\n\tthe row is added without the column given as input\nsaves the difference between the length of the original table and the one just created\nsave the created table in the original one\nreturns the difference",
+    "tags": ["Lists", "Dictionaries"],
+    "effort": 2,
+    "clues": [],
+    "from": "recupero-15-2-18"
+}
