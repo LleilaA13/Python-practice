@@ -45,6 +45,7 @@ def ex30(fname1, fname2, fname3):
     c = text[i]
     if c in '0123456789':
       k = text[i:i+3]
+      i += 3
       if k in mapping: #file 2 
         text1 += mapping[k]
       else:
