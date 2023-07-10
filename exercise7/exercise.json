@@ -1,0 +1,10 @@
+{
+    "id": 68,
+    "description": "Given a path to a directory and a list of extensions, the function, recursively, searches the directory and its subdirectories for files with list extensions, returns a dictionary with extension keys and values the number of files found.",
+    "text": "Design a function es68(dirname, extensions) such that:\n    - it is recursive or uses recursive functions(s)/method(s),\n    - it receives as arguments:\n      - a directory pathname 'dirname', \n      - a list of strings 'extensions' representing the ending part of\n         filenames, a list of strings 'words' that do not contain\n      - spaces/tab/newlines\n    - it counts how many files ending with any of the given extensions\n      can be found in 'dirname' or any of its subdirectories.\n    - it returns a dictionary where:\n      - the keys are the extensions passed as argument, if at least\n        one file ending with such an extension can be found, and\n      - the related values are the number of files whose name ends\n        with such a keys.\n\n    Note: if no file can be found ending with a given extension, such\n    a key is not included in the returned dictionary.\n",
+    "algorithm": "Initialize a count dictionary with extension keys and 0 \n value \n for each file in the directory: \n\t creates the path to the file \n\t if the file is a directory: \n\t\t call the function es68(...) on that function and save the returned result in a diz variable \n\t\tfor each key-value diz: \n\t\t\tupdate the values of the count dictionary \n\t otherwise: \n\t\tfor each extension of the list: \n\t\t\t if the file ends with the extension: \n\t\t\t\t updates the dictionary for that extension\n for each key in the dictionary: \n\t if the value for the key is 0: \n\t\t delete the key from the dictionary \n return the count dictionary",
+    "tags": ["File Search", "Recursion"],
+    "effort": 2,
+    "clues": [],
+    "from": "esame-15-2-18"
+}
