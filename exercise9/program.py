@@ -31,17 +31,20 @@
       'aaaa'  'aacd'   ---> 'aaaacd'   with suffix 'aa'
       'aacd'  'acde'   ---> 'aacde'    with suffix 'acd'
 '''
+
+
 def es8(insieme):
-  #write your code here
-  my_list = []
-  for p in insieme:
-    for p2 in insieme-{p}:
-      for i in range(2,len(p)+1):
-        if p[-i:] == p2[:i]:
-          my_list.append(p+p2[i:])
-        else:
-          continue
-  final_list = []
-  [final_list.append(x) for x in my_list if x not in final_list]
-  final_list.sort()
-  return final_list
+    # write your code here
+    my_list = []
+    for p in insieme:
+        for p2 in insieme-{p}:
+            # starting from subsequences of length 2 up until len(p)+1 to ensure that we enclude len of p
+            for i in range(2, len(p)+1):
+                if p[-i:] == p2[:i]:
+                    my_list.append(p+p2[i:])
+                else:
+                    continue
+    final_list = []
+    [final_list.append(x) for x in my_list if x not in final_list]
+    final_list.sort()
+    return final_list
