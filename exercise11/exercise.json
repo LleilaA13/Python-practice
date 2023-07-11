@@ -1,0 +1,10 @@
+{
+    "id": 10, 
+    "description": "Given a file with one word per line and a number k, returns the word composed of the letters of the words with length k, taking for each position the letter that appears most often in the words", 
+    "text": "\n    Design  and implement the function es10(ftext,k) that takes as input\n   a text file path and an integer k, and returns a string with length\n   k.\n\n   The input text file contains strings of different length (one per\n   line and each line ends with '\n'), as the file f9.txt.\n\n   The k characters of the string returned by the function are\n   obtained considering all the strings in ftext that are k character\n   long.  The i-th character of the string will be the character that\n   appears most frequently as the i-th character of the strings with\n   length k in ftext. In case of equal occurrences, the first\n   character in alphabetical order among the most frequent characters.\n   An empty string will be returned if the text file does not contain\n   words with length k.\n\n   As an example, for the text file f9.txt and k=3 the function\n   returns the string 'are' because in the f9.txt file there are the\n   following 4 strings with length 3: tre due amo ora\n", 
+    "algorithm": "Read the file and save the words in a list\ndelete words with length!=k\ninitializes an empty string s\n\tif the word list is empty return s, otherwise:\n\tcreates a dictionary with letter key and value number of times the letter appears in the i-th position\n\tfor each position I look for the letter that appears most often and put it in s\nreturn s\n", 
+    "tags": ["File", "Strings", "Dictionaries", "Sorting"], 
+    "effort": 3,
+    "clues": [],
+    "from":"exam-8-1-19"
+}

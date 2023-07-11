@@ -1,0 +1,10 @@
+{
+    "id": 12, 
+    "description": "Given an integer k, build a binary tree complete with height k, the leaves with value from 1 to 2^k and the inner nodes with value the sum of the two children values.", 
+    "text": "\n    A  tree is said complete binary if all its internal nodes have\n    exactly 2 children and all the leaves are on the same level.\n    Design and implement the recursive function es12(k) (or function\n    that uses recursive function(s) or recursive method(s)) that:\n    - takes as argument an integer k\n    and constructs a complete binary tree with height k consisting of\n    nodes of type Node, as defined in the library bintree.py. Leaf\n    identifiers, read from left to right are the 2^k-integers ranging\n    from 1 to 2^k (note that a complete binary tree with height k\n    always has 2^k leaves). The identifiers of the internal nodes are\n    given by the sum of the identifiers of their two children.\n    The function returns as a result the root of the built tree. \n    Example: \n    - es12(2) creates and returns the tree on the left\n    - es12(3) creates and returns the tree on the right\n\n                    10                                  36               \n             _______|______                      _______|______         \n            |              |                    |              |        \n            3              7                   10             26        \n         ___|___        ___|__               ___|___        ___|__      \n        |       |      |      |             |       |      |      |     \n        1       2      3      4             3       7     11     15     \n                                           _|_     _|_    _|_    _|_    \n                                          |   |   |   |  |   |  |   |   \n                                          1   2   3   4  5   6  7   8\n    ", 
+    "algorithm": "", 
+    "tags": ["Recursion", "Trees"], 
+    "effort": 3,
+    "clues": [],
+    "from":"exam-8-1-19"
+}
