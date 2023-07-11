@@ -1,0 +1,10 @@
+{
+    "id": 9, 
+    "description": "Given the name of a directory as input, return a list of pairs (subdir name, bytes occupied by all the .txt files in that subdir), sorted by space and, then, by subdir name", 
+    "text": "Define a function ex9(pathDir) such that:\n    - it is recursive or uses recursive functions(s)/method(s);\n    - it receives the pathname 'pathDir'of a directory as argument;\n    - it returns a list of pairs (tuple with two elements). Each tuple\n      contains the name of a subdirectory that can be reached from\n      'pathDir' and the total amount of bytes of all the files with\n      extension .txt is that subdirectory.\n    The list are sorted in descending order with respect to their\n    second component (the amount of bytes of the .txt files) and, in\n    case of tie, in alphabetical order with respect to the first\n    component (the name of the subdirectory).  Files and directories\n    whose name begins with the '.'  character should not be\n    considered.\n\n    For the purposes of the exercise, the following may be useful the\n    following functions in the os module: os.listdir(),\n    os.path.isfile(), os.path.isdir(), os.path.basename(),\n    os.path.getsize()\n\n    Example: with es9('Informatica/Software') it is returned the list:\n    [('SistemiOperativi', 287), ('Software', 10), ('BasiDati', 0)]\n", 
+    "algorithm": "I create a function that returns me the list of all folder paths starting from the input path \n for each folder in the list \n I calculate the space of the .txt file \n I add the name of the folder and the space to the final list \n I order the list and then return it", 
+    "tags": ["Recursion", "Files", "Sorting"], 
+    "effort": 3,
+    "clues": [],
+    "from":"esame-8-1-19"
+}
