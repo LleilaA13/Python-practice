@@ -1,0 +1,10 @@
+{
+    "id": 16,
+    "description": "Given as input an s string and an integer k, return an ordered list containing the different s sub-strings in which exactly k distinct characters appear",
+    "text": "\n    Design  function es16(s,k) that receives as input\n    - a string s of characters \n    - an integer k \n\n    and returns the list with the different substrings of s made of\n    exactly k distinct characters. The list of substrings are ordered\n    by decreasing lengths and, for equal lengths, in alphabetical\n    order. The list should not contain duplicates.\n\n    Remember that a substring of s is what you can get from s by\n    eliminating 0 or more characters from the left end and 0 or more\n    characters from the right end.\n\n    For example,\n    - if  s='aabbb' and k=1\n    - the function returns the list ['bbb', 'aa', 'bb', 'a', 'b']\n\n    - if  s='bcafedg' and k=3\n    - the function returns the list ['afe', 'bca', 'caf', 'edg', 'fed']\n\n    - if s='ccaabbdd' and k=3\n    - the function returns the list \n      ['aabbdd', 'ccaabb', 'aabbd', 'abbdd', 'caabb', 'ccaab', 'abbd', 'caab']\n\n",
+    "algorithm": "I initialize an empty list and an empty set\nfor each sub-string of s, of length at least k\n\tI add the substring to the set\nfor each string in the set\n\tI check that it has exactly k characters\n\tif so, I add it to the list\nI sort the list\nreturn the sorted list",
+    "tags": ["Lists", "Strings", "Sorting"],
+    "effort": 3,
+    "clues": [],
+    "from": "recupero-7-11-18"
+}
