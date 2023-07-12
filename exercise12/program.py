@@ -28,6 +28,19 @@ import treenode
 
 '''
 def es12(k):
+    t, _ = createTree(k, 1)
+    return t
 
-    # enter your code here
-    pass
+def createTree(k, n):
+    
+    if k:
+        t = treenode.Node(None)
+        left, n1 = createTree(k-1, n)
+        right, n2 = createTree(k-1, n1+1)
+        t.sons = [left, right]
+        t.id = left.id + right.id
+        return t, n2
+    
+    else:
+        t = treenode.Node(n)
+        return t, n

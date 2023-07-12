@@ -1,0 +1,10 @@
+{
+    "id": 11, 
+    "description": "Given a text file containing strings, return a dictionary with key a string without vowels and attribute a list of strings, which generated the key", 
+    "text": "Design a function ex11(textfile) such that:\n  - it receives as argument the path of a text file that contains\n    in each line a distinct string of characters\n  - it returns a dictionary having strings as keys and string lists as\n    values.\n  The dictionary keys are the strings contained in the 'textfile',\n  without any vowel and with the remaining characters sorted in\n  alphabetical order (for example, the string 'angel' generates the\n  key 'ngl').\n  The corresponding value of a key is the list of strings of\n  'textfile' that generated that key (note that different strings can\n  generate the same key as for 'car', 'core' and 'cure').  The strings\n  in the list are sorted by decreasing length and, with equal lengths,\n  in alphabetical order.\n\n  Example: for the text file f10.txt, the function returns the\n  dictionary:\n     {'prt': ['parto', 'porta'], \n     'r': ['era', 'ora'], \n     'pr': ['arpia', 'arpa'], \n     'cs': ['casa', 'cosa'], \n     'fll': ['follia', 'fallo', 'folla'], \n     'rt': ['otre', 'tre'], \n     'lp': ['piolo', 'polo']\n     }", 
+    "algorithm": "I read the file and create a list of words, to which any initial and final white spaces have been deleted \n I initialize an empty dictionary for each word \n I remove the vowels \n I order the consonants \n I update the dictionary for each key in the dictionary \n I order the list of strings \n I return the dictionary\n", 
+    "tags": ["Files", "Sorting", "Strings", "Dictionries"], 
+    "effort": 3,
+    "clues": [],
+    "from":"esame-8-1-19"
+}
