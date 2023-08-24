@@ -32,8 +32,9 @@ Implement the function es27(table, col, val) that takes as an input
 
 
 def es27(table, column, value):
-    table_new = [{col:val for col,val in row.items() if col != column}
-                for row in table if row[column] != value]
-    difference = len(table) - len(table_new)
-    table[:] = table_new
-    return difference
+    table2 = [{col: val for col, val in row.items() if col != column}
+            for row in table if row[column] == value]
+    diff = len(table) - len(table2)
+    table[:] = table2
+    return diff
+    
