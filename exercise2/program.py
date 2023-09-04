@@ -37,4 +37,4 @@ def es27(table, column, value):
     diff = len(table) - len(table2)
     table[:] = table2
     return diff
-    
+        

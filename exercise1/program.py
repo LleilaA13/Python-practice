@@ -15,8 +15,7 @@ can be stored as
 
 '''
 
-def es26(table, column):
-    '''Define the function es26(table, col) that takes as an input
+'''Define the function es26(table, col) that takes as an input
 
     - a table table represented by a list of dictionaries
     - a string col with the name of one of the columns of table
@@ -33,7 +32,10 @@ def es26(table, column):
     table in [{'name': 'Bruno', 'year': 1981,'tel': 5558432},
               {'name': 'Sophie','year':1973 ,'tel': 5553546}]
 
-    '''
-    table.sort(key = lambda x: x[column], reverse = True)
-    return len(table[0])
-    
+'''
+
+def es26(table, column):
+  table.sort(key = lambda val : val[column], reverse = True)
+  return len(table[0])
+
+

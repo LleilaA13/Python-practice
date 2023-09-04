@@ -29,33 +29,41 @@
 
 
 def ex30(fname1, fname2, fname3):
-    mapping = {}
-    with open(fname2, encoding= 'utf8') as f:
+    mapping = {} #la key è il numero e il valore è la lettera
+    with open(fname2, encoding = 'utf8') as f:
         for line in f:
-            c, n = line.split()
-            mapping[n] = c 
-    text = ''
+            c, n = line.split() #split the lines of fname2 knto two parts using a whitespace as separator
+            mapping[n] = c
+
+
+    text = '' #lo usi per f1
     
     with open(fname1, encoding = 'utf8') as f:
-        text = f.read()
-    
-    text1 = ''
-    i = 0
+        text = f.read() ##così poi da poterlo scorrere e lavorarci sopra
+        
+    textfinal = ''
     counter = 0
-    
+    i = 0
     while i < len(text):
         c = text[i]
         if c in '0123456789':
             k = text[i:i+3]
             i += 3
             if k in mapping:
-                text1 += mapping[k]
+                textfinal += mapping[k]
             else:
-                text1 += '?'
+                textfinal += '?'
                 counter += 1
+                
         else:
-            text1 += c
             i += 1
-    with open(fname3, mode = 'w', encoding='utf8') as f:
-        f.write(text1)
-    return counter
+            textfinal += c
+            
+    with open(fname3, mode= 'w', encoding='utf8') as f:
+        f.write(textfinal)
+    print(counter)
+
+
+if __name__ == "__main__":
+    ex30('ftesto2.txt','ftesto2b.txt','risposta2.txt')
+    
