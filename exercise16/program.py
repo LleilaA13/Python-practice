@@ -24,21 +24,34 @@ For example:
 
 
 def es36(dictionariesList):
-    keys = set(dictionariesList[0].keys())
-    for d in dictionariesList[1:]:
-        keys = keys.intersection(d.keys())
-    
-    diz = {k:set(v) for k,v in dictionariesList[0].items() if k in keys}
-    for d in dictionariesList[1:]:
-        for k, v in d.items():
-            if k in diz:
-                diz[k] = diz[k].intersection(v)
-                
-    return {k:sorted(v) for k, v in diz.items()}    
+    diz = {}
+    keys = []
+    for d in dictionariesList:
+        keys.append(set(d.keys()))
         
+    inter_keys = keys[0]
+    for k in keys[1:]:
+        inter_keys = inter_keys.intersection(k)
         
+    for k in inter_keys:
+        vals = []
+        for d in dictionariesList:
+            vals.append(set(d[k]))
+        inter_val = vals[0]
+        for v in vals[1:]:
+            inter_val = inter_val.intersection(v)
+        diz[k] = sorted(list(inter_val))
+    return diz
         
-        
+
+
+
+
 if __name__ == '__main__':
     print(es36([{'a': [1, 3, 5], 'b': [2, 3], 'd': [3]}, {'a': [5, 1, 2, 3], 'b': [2], 'd': [3]},
                 {'a': [3, 5], 'c': [4, 1, 2], 'd': [4]}]))
+
+'''
+
+
+'''
