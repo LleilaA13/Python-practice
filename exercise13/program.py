@@ -27,8 +27,44 @@
 
 
 def ex11(textfile):
+    text = ''
+    diz = {}
+    with open(textfile, encoding='utf8') as f:
+        text = f.read()
+    text = text.strip()
+    lista = text.split('\n')
+    for word in lista:
+        word = word.strip()
+        lista1 = []
+        for c in word:
+            if c not in 'aieou':
+                lista1.append(c)
+        lista1 = sorted(lista1)
+        str_cs = "".join(lista1)
+        diz[str_cs] = diz.get(str_cs, [])
+        diz[str_cs].append(word)
+    for k, v in diz.items():
+        diz[k] = sorted(v, key = lambda s : (-len(s), s))
+    return diz
+        
+if __name__ == "__main__":
+    ex11('ft10a.txt')
 
-    # insert your code here
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
     diz = {}
     with open(textfile, encoding='utf8') as f:
         for word in f:
@@ -50,7 +86,4 @@ def ex11(textfile):
 
     return diz
 
-
-if __name__ == "__main__":
-
-    print(ex11('ft10a.txt'))
+'''

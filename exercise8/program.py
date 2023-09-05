@@ -29,13 +29,6 @@ import treenode
 
 def es7( tree, id_set, k, count=0):
     # caso base: non ha figli
-    if tree.sons == []:  #The expression tree.sons == [] checks whether the sons attribute of an object called tree is an empty list
-        return count #return count equal to 0, as initialized
-    num = 0 #initialize the output needed to 0
-    for el in tree.sons: #iterates over the nodes, elements of the trees
-        count = es7(el,id_set, k, count) #recursive call, 
-        if el.id in id_set:
-            num += 1
-    if num == k:
-        return count + 1
+  if tree.sons == []:
     return count
+  

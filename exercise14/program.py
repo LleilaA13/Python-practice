@@ -25,24 +25,20 @@ For example,
 '''
 
 def es16(s, k):
-  result = []
-  insieme = set()
+
+  #a substring is valid if its set is equal to k
+  def is_valid_substring(sub):
+    return len(set(sub)) ==  k
+  lista= []
+  tmp = set()
   for i in range(0, len(s)+1):
-    for j in range(i+k,len(s)+1):
-      insieme.add(s[i:j])
-  for string in insieme:
-    distinct_chars = set(string)
-    if len(distinct_chars) == k and len(string) == len(distinct_chars) :
-        result.append(string)
-    if len(string) != len(distinct_chars) and len(distinct_chars) == k:
-        result.append(string)
-      
-  result.sort()
-  result.sort(key = len, reverse = True)
-  return result
-  
-  
-  
-  
+    for j in range(i+k, len(s)+1):
+      tmp.add(s[i:j])
+      if is_valid_substring(s[i:j]):
+        lista.append(s[i:j])
+  lista = set(lista)
+  lista = list(lista)
+  sorted_lista = sorted(lista, key=lambda x:(-len(x), x))
+  return sorted_lista
 if __name__ == '__main__':
-  print(es16('aabbb', 1,))
+  print(es16('aabbb', 1))

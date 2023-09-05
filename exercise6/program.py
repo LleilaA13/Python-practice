@@ -25,10 +25,14 @@ def ex48(root):
     1.
 
     '''
+#the binary tree is a recursive data structure because each child of a node can be considered
+#as the root of a subtree, which can also be a binary tree.
+
+
+  #base case
     if root == None:
-        return 0
-    count = ex48(root.sx) + ex48(root.dx)
+      return 0
+    count = ex48(root.sx) + ex48(root.dx) #recursive 
     if root.sx != None and root.dx != None:
-        count += 1
+      count += 1
     return count
-  

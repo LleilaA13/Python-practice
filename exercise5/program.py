@@ -16,6 +16,20 @@ def ex54(mylist):
   the dictionary {'a':2,'b':1,'d':1} and the list becomes [1,2,8,8]
 
   '''
+    # insert here your code
+  dix = {}
+  newlist = mylist.copy()
+  for i in range(len(newlist)):
+    if isinstance(newlist[i],str):
+      mylist.remove(newlist[i])
+      if newlist[i] in dix:
+        dix[newlist[i]] += 1
+      else:
+        dix[newlist[i]] = 1
+  mylist = newlist
+  return dix
+  #copy() is important because modifying a list while iterating 
+  #over it can cause errors or unexpected results,here is the code w/o the copy module:
 
 if __name__ == "__main__":
   ex54([1,'a',2,'b','a',8,'d',8])

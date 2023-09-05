@@ -16,14 +16,6 @@ allora la funzione  restituisce il dizionario
 
 
 def es18(d1, d2):
-    common = set(d1.keys()) & set(d2.keys())
-    res ={}
-    for k in common:
-        intersection = d1[k] & d2[k]
-        unione = d1[k].union(d2[k])
-        res[k] = (intersection, unione)
-    return res
-
-
+    pass
 if __name__ == '__main__':
     print(es18({1: {1, 2, 3}, 2: {1, 2, 3}, 5: {1}}, {1: {3, 4, 5}, 3: {1, 2, 3}, 5: {3}, 8: {6}}))
