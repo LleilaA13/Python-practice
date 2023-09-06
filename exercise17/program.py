@@ -1,3 +1,5 @@
+
+
 '''Write the function es37(dictionariesList) that takes as an input a
 list of dictionaries and returns a dictionary.
 
@@ -20,19 +22,18 @@ the returned dictionary will be
 
 '''
 
-def es37(dictionariesList):
 
-    N = len(dictionariesList)
+def es37(dictionariesList):
+    diz = {}
     count = {}
-    
     for d in dictionariesList:
-        for k in d:
+        for k in d.keys():
             if k in count:
                 count[k] += 1
             else:
                 count[k] = 1
-                
-    diz = {}
+
+    N = len(dictionariesList)
     for d in dictionariesList:
         for k, v in d.items():
             if count[k] >= N/2:
@@ -41,18 +42,8 @@ def es37(dictionariesList):
                 else:
                     diz[k] = set(v)
     return diz
-    
+
 
 if __name__ == '__main__':
     print(es37([{'a': [1, 3, 5], 'b':[2, 3], 'd':[3]}, {'a': [5, 1, 2, 3], 'b':[2], 'd':[3]}, {
         'a': [3, 5], 'c':[4, 1, 2], 'd':[4]}]))
-
-
-
-
-
-
-
-
-
-
