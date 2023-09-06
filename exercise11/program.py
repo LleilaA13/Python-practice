@@ -19,35 +19,51 @@
    following 4 strings with length 3: tre due amo ora
 
 '''
+'''
+tre
+due
+amo
+ora
+'''
 
 
 
 def es10(ftext,k):
-   count = []
-   with open(ftext, encoding='utf8') as f:
-      for line in f:
-         for i in range(len(line)):
-            if len(line[i]) == k:
-               count.append(line[i])
-               
-   if not count:
-      return ""
    
-   result = []  
-      
-   for char in range(k):
-      w = []
-      for word in count:
-         w.append(word[char])
+   text = ''
+   lista = []
+   result = []
+   
+   with open(ftext, encoding = 'utf8') as f:
+      text = f.read()
+   text = text.split('\n')
+   
+   for x in text:
+      if len(x) == k:
+         lista.append(x)
          
-      freq = {
-         c : w.count(c) for c in w
-      }
-      charact = max(freq.items(), key = lambda tup: (tup[1],-ord(tup[0])))[0]
-      result.append(charact)
+   if not lista:
+         return ""
+      
+      
+   for i in range(k):
+      dic = {}
+      for word in lista:
+         dic[word[i]] = dic.get(word[i], 0) + 1
+      
+      char = sorted(dic.items(), key = lambda tup: (-tup[1], tup[0]))
+      
+      result.append(char[0][0])
+      
+      
    return "".join(result)
 
+   print(lista)
+
+   
+      
+   #return "".join(final)
 if __name__ == "__main__":
-   print(es10('ft9.txt', 33))
+   print(es10('ft9.txt', 3))
    
 #      charact = max(freq.items(), key = lambda tup: (tup[1],-ord(tup[0])) )[0]

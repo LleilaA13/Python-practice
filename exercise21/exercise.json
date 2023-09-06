@@ -1,0 +1,10 @@
+{
+    "id": 43,
+    "description": "When you input a text file containing integers, it returns a list of integers that are the sum of the integers in the file",
+    "text": "Design a function es43(textfile) such that\n    - it receives as arguments the address of a text file 'textfile' that \n      contains lines with integers separated by spaces\n    - it returns a list of integers.\n    The length of the list is given by the maximum number of integers\n    that appear in a row of 'textfile'. In the generic position i of\n    the list there is the sum of all the integers at position i in all\n    the lines with at least i integers.\n    For example, if the file contains the 3 lines:\n    ' 0 2 4\n      6 8 10\n      4 0 1'\n    the function returns the list [10,10,15] i.e. the sums in column\n    if the file contains the 4 lines (with different lengths):\n    ' 1 2 3\n      4 5 6 7 3 6\n      1\n      1 2'\n    the function returns the list [7,9,9,7,3,6].\n",
+    "algorithm": "Initialize an empty list \n open the text file: \n\t for each line \n\t\t take the list of integers \n\t\t for each index of the integer, integer of the list: \n\t\t\t the index is less than the length of the list: \n\t\t\t sum the integer at will present in the list \n\t\t\t otherwise: \n\t\t\t\t add the integer at the bottom of the list and return the list.",
+    "tags": ["File", "Strings"],
+    "effort": 3,
+    "clues": [],
+    "from": "recupero-19-6-18"
+}

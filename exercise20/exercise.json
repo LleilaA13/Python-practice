@@ -1,0 +1,10 @@
+{
+    "id": 50,
+    "description": "Given a string of digits s and an integer k, returns the list of sub-strings of s long k that have the characters in strictly increasing order",
+    "text": "Write the function es50(s,k) that: \n\n      - receives as an input a string s of characters that are the\n        digits from '0' to '9' and an integer k\n\n      - builds the list of all the different substrings of s, with\n        length k, whose characters are in a striclty increasing order\n\n      and returns the list of such substrings, ordering the items in a\n      descreasing order.\n\n    Note that the list must not contain duplicates.\n\n    Remember that a substring is what you get from s by deleting 0 or\n    more initial characters and 0 or more final characters.\n\n    EXAMPLES: \n    \n    with s='9135918246556' and k=3 the function returns the list\n    ['359','246', 135']\n\n    with s='1234123412341234' and k=3 the function returns the list\n    ['234',123']\n\n    with s='987654321' and k=3 the function returns the list []\n\n    ",
+   	"algorithm": "Define a new function crescent(s): \n for each character of s, until the penultimate one: \n\t if the character is greater than or equal to the next character: \n\t\t return False \n\t return True \n\n\n initialize a set containing all substrings of s, of length k, so crescent returns True: \n return the ordered list of the set",    
+   	"tags": ["Strings", "Sorting"],
+    "effort": 3,
+    "clues": [],
+    "from": "recupero-19-9-18"
+}

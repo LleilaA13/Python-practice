@@ -1,0 +1,10 @@
+{
+    "id": 51,
+    "description": "Given in input a list of words ls and a character c, delete from ls all words that contain c, return the number of deleted words",
+    "text": "Write the function es51(ls,c) that: \n\n    - receives as an input a list of words ls and a character c\n\n    - deletes from ls the words that contain the character c (both in\n      upper and lower case)\n\n    - returns the number of deleted words from ls. \n\n    Note that at the end of the function the list MUST be modified\n    (remember that the lists are mutable).\n\n     EXAMPLES:\n\n     If ls=[ 'Angelo', 'Andrea', 'Fabio', 'Francesco', 'Lucio',\n     'Luca', 'Ugo'] and c='a'\n\n     the function returns 5 and the list ls becomes ['Lucio','Ugo'].  \n\n     If ls=[ 'Angelo', 'Andrea', 'Fabio', 'Francesco', 'Lucio',\n     'Luca', 'Ugo'] and c='G'] and c='G'\n\n     the function returns 2 and the list ls becomes ['Andrea',\n     'Fabio', 'Francesco', 'Lucio','Luca']\n\n",
+    "algorithm": "Create a new list for every word of ls: \n\t\t if it doesn't contain c \n\t\t\t add the word to the list \n and initialize count as the difference of the length of ls with the length of the new list \n set ls equal to the new list \n return count",
+    "tags": ["Strings", "Lists"],
+    "effort": 3,
+    "clues": [],
+    "from": "recupero-19-9-18"
+}

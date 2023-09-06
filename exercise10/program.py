@@ -23,20 +23,25 @@ import os
 
 '''
 
+
 def ex9(pathDir):
     ls1 = scan_dir(pathDir)
     ls1 += [pathDir]
-    ls_fin = []
+
+    lista = []
+    
     for el in ls1:
         size = 0
-        for pc in os.listdir(el):
-            p = el + '/' + pc
+        for perc in os.listdir(el):
+            p = el + '/' + perc
             if os.path.isfile(p):
+                if p[0] == '.':
+                    continue
                 if p[-4:] == '.txt':
                     size += os.path.getsize(p)
-        ls_fin.append((os.path.basename(el), size))
-    ls_fin = sorted(ls_fin, key = lambda x : (-x[1], x[0]))
-    return ls_fin
+        lista.append((os.path.basename(p), size))
+    lista = sorted(lista, key = lambda x:(-x[1],x[0]))
+    return lista
 
 def scan_dir(path):
     if os.path.isfile(path):
