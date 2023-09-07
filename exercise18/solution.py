@@ -14,7 +14,7 @@ def es62(matrix):
                 imin = i
                 jmin = j
     m1 = [[matrix[i][j]
-           for j in range(len(matrix[0]))] for i in range(len(matrix))]
+        for j in range(len(matrix[0]))] for i in range(len(matrix))]
     for j in range(len(matrix[0])):
         m1[imin][j] = matrix[imax][j]
         m1[imax][j] = matrix[imin][j]

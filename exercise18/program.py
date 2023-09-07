@@ -26,3 +26,34 @@ def es62(matrix):
              | 25  1 -1 |           | -4 0   2 |
     '''
     # enter your code here
+
+
+    # max:
+    ymax = xmax = 0
+
+    for x in range(len(matrix[0])):
+        for y in range(len(matrix)):
+            if matrix[x][y] >= matrix[xmax][ymax]:
+                ymax = y
+                xmax = x
+
+    # min:
+    ymin = xmin = 0
+
+    for x in range(len(matrix[0])):
+        for y in range(len(matrix)):
+            if matrix[x][y] <= matrix[xmin][ymin]:
+                xmin = x
+                ymin = y
+
+    #swap:
+    #x -> row, y -> column
+    matrix[xmin], matrix[xmax] = matrix[xmax], matrix[xmin]
+    for row in matrix:
+        row[ymin], row[ymax] = row[ymax], row[ymin]
+
+    return matrix
+
+
+if __name__ == '__main__':
+    es62([[2, 0, -4], [5, 10, 10], [25, 1, -1]])
