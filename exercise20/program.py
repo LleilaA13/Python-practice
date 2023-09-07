@@ -1,6 +1,6 @@
 
 
-def es50(s,k):
+def es50(s, k):
     '''Write the function es50(s,k) that: 
 
       - receives as an input a string s of characters that are the
@@ -18,7 +18,7 @@ def es50(s,k):
     more initial characters and 0 or more final characters.
 
     EXAMPLES: 
-    
+
     with s='9135918246556' and k=3 the function returns the list
     ['359','246', 135']
 
@@ -28,5 +28,16 @@ def es50(s,k):
     with s='987654321' and k=3 the function returns the list []
 
     '''
-    # enter your code her
+    # enter your code here
 
+    unique_substrings = set()
+    
+    for i in range(len(s) - k + 1):
+      sub = s[i:i+k]
+      if all(sub[j] < sub[j+1] for j in range(k-1)):
+        unique_substrings.add(sub)
+        
+    result = sorted(list(unique_substrings), reverse=True)
+    return result
+if __name__ == '__main__':
+    es50('9135918246556', 3)

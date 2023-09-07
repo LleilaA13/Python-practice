@@ -1,7 +1,4 @@
-
-
-def es51(ls, c):
-    '''Write the function es51(ls,c) that: 
+'''Write the function es51(ls,c) that: 
 
     - receives as an input a list of words ls and a character c
 
@@ -13,19 +10,32 @@ def es51(ls, c):
     Note that at the end of the function the list MUST be modified
     (remember that the lists are mutable).
 
-     EXAMPLES:
+    EXAMPLES:
 
-     If ls=[ 'Angelo', 'Andrea', 'Fabio', 'Francesco', 'Lucio',
-     'Luca', 'Ugo'] and c='a'
+    If ls=[ 'Angelo', 'Andrea', 'Fabio', 'Francesco', 'Lucio',
+    'Luca', 'Ugo'] and c='a'
 
-     the function returns 5 and the list ls becomes ['Lucio','Ugo'].  
+    the function returns 5 and the list ls becomes ['Lucio','Ugo'].  
 
-     If ls=[ 'Angelo', 'Andrea', 'Fabio', 'Francesco', 'Lucio',
-     'Luca', 'Ugo'] and c='G'] and c='G'
+    If ls=[ 'Angelo', 'Andrea', 'Fabio', 'Francesco', 'Lucio',
+    'Luca', 'Ugo'] and c='G'] and c='G'
 
-     the function returns 2 and the list ls becomes ['Andrea',
-     'Fabio', 'Francesco', 'Lucio','Luca']
+    the function returns 2 and the list ls becomes ['Andrea',
+    'Fabio', 'Francesco', 'Lucio','Luca']
+'''
 
-    '''
- 
 
+def es51(ls, c):
+
+    count = 0
+    for word in ls:
+        if c.lower() in word.lower():
+            count += 1
+    lr = [word for word in ls if c.lower() not in word.lower()]
+    ls[:] = lr
+    return count
+
+
+if __name__ == '__main__':
+    es51(['Angelo', 'Andrea', 'Fabio', 'Francesco', 'Lucio', 'Luca', 'Ugo'],
+        'f')
