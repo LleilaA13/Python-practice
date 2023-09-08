@@ -16,12 +16,11 @@ class Test(testlib.TestCase):
             - expected : expected list
         '''
         with self.ignored_function('builtins.print'), \
-             self.forbidden_function('os.walk'):
-             #self.timer(2):
+                self.forbidden_function('os.walk'):
+            # self.timer(2):
             result = program.ex43(ftesto)
         self.assertEqual(
             result, expected, f"Il risultato deve essere {expected} invece che {result}/The result should be {expected} instead of {result}")
-
 
     @data(
         ('finteri1.txt', [10, 10, 15]),

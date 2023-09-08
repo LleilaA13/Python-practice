@@ -1,0 +1,10 @@
+{
+    "id": 76,
+    "description": "Given a string, the recursively function calculates the suffixes of the string, returns the suffix list.",
+    "text": "\n        Design and implement a function es76(word) such that:\n    - it is recursive or uses recursive functions(s)/method(s),\n    - it receives as argument a string 'word' of characters, and\n    - it returns the list of all the suffixes of word.\n    The elements of the returned list must be ordered by decreasing\n    length.\n    Remember that a suffix of a word is what you get when you delete\n    0 or more initial characters of the word.\n\n    Example: if word='fondamenti' the returned list will be:\n    ['fondamenti', 'ondamenti', 'ndamenti', 'damenti', 'amenti', 'menti', 'enti', 'nti', 'ti', 'i']",
+    "algorithm": "es76(parola):es76(word): \n\tif word is empty: \n\t\t returns the empty list \n\t otherwise: \n\t\t returns the list with word element plus the function es76(...) with word argument minus the first character\n",
+    "tags": ["Recursion", "Strings"],
+    "effort": 3,
+    "clues": [],
+    "from": "esame-18-4-18"
+}

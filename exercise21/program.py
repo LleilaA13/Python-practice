@@ -1,6 +1,7 @@
 
 def ex43(textfile):
-    '''Design a function es43(textfile) such that
+    '''
+    Design a function es43(textfile) such that
     - it receives as arguments the address of a text file 'textfile' that 
       contains lines with integers separated by spaces
     - it returns a list of integers.
@@ -31,23 +32,24 @@ def ex43(textfile):
         for line in f:
             integers = [int(num) for num in line.split()]
             matrix.append(integers)
-    for lista in matrix:
-        if len(lista) > max_len:
-            max_len = len(lista)
 
-    for lista in matrix:
-        for i in range(max_len):
-          if len(lista) < max_len:
-            lista.append(0)
-            
+    max_len = len(max(matrix, key=lambda l: len(l)))
+
     num_row = len(matrix)
-    num_col = len(matrix[0])
-    
-    for col in range(num_col):
-      sum = 0
-      for row in range(num_row):
-        sum += matrix[row][col]
-        if row + 1 == num_row:
-          result.append(sum)
+    num_col = max_len
+
+    for col_idx in range(num_col):
+
+        sum = 0
+        for row_idx in range(num_row):
+            if len(matrix[row_idx]) <= col_idx:
+                continue
+            sum += matrix[row_idx][col_idx]
+
+        result.append(sum)
     return result
 
+
+if __name__ == "__main__":
+
+    print(ex43("finteri2.txt"))

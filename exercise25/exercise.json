@@ -1,0 +1,10 @@
+{
+    "id": 71,
+    "description": "Given one directory path and two integers, min and max, recursively search in the directory for files between min and max size. Return the dictionary with the found files as keys and the depth in which the file was found as value.",
+    "text": "Define the recursive function (or a function that uses your own\n    recursive function) es71(dir, minimum, maximum) that searches in\n    the directory dir the files that have a size between minimum and\n    maximum size (included).  The function returns a dictionary that\n    contains the names of the identified files (without path) as keys,\n    and the corresponding depths (counting the initial directory 'dir'\n    as depth 0) as values.  In case a file name is present at\n    different depths, the dictionary must contain the greater one.\n    Note: to find the size of the file you can use the os.stat\n    function\n\n",
+    "algorithm": "add a new argument to the function es71(...), depth, with default value 0\ninitialize depths dictionary, empty\nfor each filename in the directory:\n\tcreates the file path\n\tif the file is a directory:\n\t\tcall es71(...) on that directory, with depth increased by 1, save the result in a variable diz\n\t\tfor each key-value of diz:\n\t\t\tif the key is not in the depths dictionary or the depth value is greater than the value for that key in depths:\n\t\t\t\tupdate the depths dictionary with the new value\n\telse:\n\t\tget the stats of the file\n\t\tif the file size is between min and max:\n\t\t\tif the file is not in depths or if the depth of the file in depths is less than the depth of the file just found:\n\t\t\t\tupdate the value in depths for that file\nreturn depths",
+    "tags": ["File Search", "Recursion"],
+    "effort": 3,
+    "clues": [],
+    "from": "esame-15-2-18"
+}
