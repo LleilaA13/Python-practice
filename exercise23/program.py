@@ -1,11 +1,11 @@
 '''Design the function ex63(word_file, triple_file) such that:
     - it receives as arguments a filename 'word_file' of a text file
-      containing one string for each line, and a filename
-      'triple_file' of a text file to create
+    containing one string for each line, and a filename
+    'triple_file' of a text file to create
     - it reads the words in word_file file and creates a new text file
-      named 'triple_file'
-    - it returns the total number of characters present in the strings
-      of  word_file file (ignoring spaces and newlines).
+    named 'triple_file'
+- it returns the total number of characters present in the strings
+    of  word_file file (ignoring spaces and newlines).
     The created file has the same number of lines as the read file
     (one for each word).  In the corresponding line of a string 's' in
     'word_file', 'triple_file' has a tuple (a,b,c) of integers where:
@@ -20,10 +20,31 @@
     (10,4,3)
 
 '''
-    
 
 
 def ex63(word_file, triple_file):
 
     # inser your code here
-    pass
+    result = 0
+    text = ''
+
+    with open(word_file, encoding='utf8') as f:
+        text = f.read()
+    text = text.split()
+    with open(triple_file, mode = 'w') as f2:
+        for s in text:
+            a = len(s)
+            b = 0
+            c = 0
+            for i in range(len(s)):
+                result += 1
+                if s[i] in 'aieouAIEOU':
+                    b += 1
+                if s[i].isupper():
+                    c += 1
+            f2.write(str((a, b , c)) + '\n')
+
+    return result
+
+if __name__ == '__main__':
+    ex63('ftesto1.txt', 'fterne1.txt')
