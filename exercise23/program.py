@@ -1,3 +1,5 @@
+#! /usr/bin/env python
+
 '''Design the function ex63(word_file, triple_file) such that:
     - it receives as arguments a filename 'word_file' of a text file
     containing one string for each line, and a filename
@@ -31,20 +33,21 @@ def ex63(word_file, triple_file):
     with open(word_file, encoding='utf8') as f:
         text = f.read()
     text = text.split()
-    with open(triple_file, mode = 'w') as f2:
+    with open(triple_file, mode='w') as f2:
         for s in text:
             a = len(s)
             b = 0
             c = 0
-            for i in range(len(s)):
-                result += 1
-                if s[i] in 'aieouAIEOU':
+            result += a
+            for ch in s:
+                if ch in 'aieouAIEOU':
                     b += 1
-                if s[i].isupper():
+                if ch.isupper():
                     c += 1
-            f2.write(str((a, b , c)) + '\n')
+            f2.write(f"{(a, b, c)}\n")
 
     return result
 
+
 if __name__ == '__main__':
-    ex63('ftesto1.txt', 'fterne1.txt')
+    print(ex63('ftesto1.txt', 'fterne1.txt'))
