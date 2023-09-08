@@ -28,6 +28,7 @@ def es42(fImageIn, fcolors, fImageOut):
     :return: number of modified pixels
     '''
     # Insert here your code
+    
 
 
 
