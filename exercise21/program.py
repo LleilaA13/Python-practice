@@ -1,8 +1,7 @@
-
 def ex43(textfile):
-    '''
+    """
     Design a function es43(textfile) such that
-    - it receives as arguments the address of a text file 'textfile' that 
+    - it receives as arguments the address of a text file 'textfile' that
       contains lines with integers separated by spaces
     - it returns a list of integers.
     The length of the list is given by the maximum number of integers
@@ -21,14 +20,14 @@ def ex43(textfile):
       1 2'
     the function returns the list [7,9,9,7,3,6].
 
-    '''
+    """
     # insert your code here
 
     matrix = []
     max_len = 0
     result = []
 
-    with open(textfile, mode='r', encoding='utf8') as f:
+    with open(textfile, mode="r", encoding="utf8") as f:
         for line in f:
             integers = [int(num) for num in line.split()]
             matrix.append(integers)
@@ -39,7 +38,6 @@ def ex43(textfile):
     num_col = max_len
 
     for col_idx in range(num_col):
-
         sum = 0
         for row_idx in range(num_row):
             if len(matrix[row_idx]) <= col_idx:
@@ -51,5 +49,4 @@ def ex43(textfile):
 
 
 if __name__ == "__main__":
-
     print(ex43("finteri2.txt"))

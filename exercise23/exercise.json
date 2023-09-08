@@ -1,0 +1,10 @@
+{
+    "id": 63,
+    "description": "Given as input two file names, one containing words and the other to be created, the function for each word in the first file, creates a trio (a, b, c) and writes it in the second file, returns the total number of characters in file 1, except spaces and carriage return.",
+    "text": "\nDesign  the function ex63(word_file, triple_file) such that:\n    - it receives as arguments a filename 'word_file' of a text file\n      containing one string for each line, and a filename\n      'triple_file' of a text file to create\n    - it reads the words in word_file file and creates a new text file\n      named 'triple_file'\n    - it returns the total number of characters present in the strings\n      of  word_file file (ignoring spaces and newlines).\n    The created file has the same number of lines as the read file\n    (one for each word).  In the corresponding line of a string 's' in\n    'word_file', 'triple_file' has a tuple (a,b,c) of integers where:\n    - a is the length of 's',\n    - b is the number of vowels in 's', and\n    - c is the number of uppercase letters in 's'\n\n    Example: if word_file contains the two strings 'PytHon' and\n    'fonDAMenti', then the function returns 16 and writes in\n    'triple_file' the following two lines:\n    (6,1,2)\n    (10,4,3)\n",
+    "algorithm": "initialize a counter at 0 \n open the first file as f1 \n\t open the second file (in writing) as f2: \n\t\t for each line in f1: \n\t\t\t clean the word from spaces and newline \n\t\t\t increase the counter by the word length \n\t\t\t initialize two variables v and m to 0 \n\t\t\t for each character of the word: \n\t\t\t\t if the character is a vowel: \n\t\t\t\t\t increments v \n\t\t\t\t\t if the character is capitalized: \n\t\t\t\t\t increase m \n\t\t\t increase m \n\t\t\t write the triplet (len, v, m) + '\newline' in f2 \n return the counter",
+    "tags": ["Files", "Strings"],
+    "effort": 3,
+    "clues": [],
+    "from": "esame-12-7-18"
+}
