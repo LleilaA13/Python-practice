@@ -23,5 +23,31 @@ def ex43(textfile):
     '''
     # insert your code here
 
+    matrix = []
+    max_len = 0
+    result = []
 
+    with open(textfile, mode='r', encoding='utf8') as f:
+        for line in f:
+            integers = [int(num) for num in line.split()]
+            matrix.append(integers)
+    for lista in matrix:
+        if len(lista) > max_len:
+            max_len = len(lista)
+
+    for lista in matrix:
+        for i in range(max_len):
+          if len(lista) < max_len:
+            lista.append(0)
+            
+    num_row = len(matrix)
+    num_col = len(matrix[0])
+    
+    for col in range(num_col):
+      sum = 0
+      for row in range(num_row):
+        sum += matrix[row][col]
+        if row + 1 == num_row:
+          result.append(sum)
+    return result
 

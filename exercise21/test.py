@@ -18,7 +18,7 @@ class Test(testlib.TestCase):
         with self.ignored_function('builtins.print'), \
              self.forbidden_function('os.walk'):
              #self.timer(2):
-            result = program.es43(ftesto)
+            result = program.ex43(ftesto)
         self.assertEqual(
             result, expected, f"Il risultato deve essere {expected} invece che {result}/The result should be {expected} instead of {result}")
 
