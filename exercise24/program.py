@@ -17,7 +17,14 @@ def es69(dir, profondita, estensioni):
 
     NOTA: per eliminare un file usate la funzione os.remove
 
-    Tests: date alcune directories contenenti file con estensioni diverse a diverse profondita', si chiama la funzione e si controlla che i file contenuti nelle directories esistano/non esistano a seconda del caso (senza usare una soluzione ricorsiva ma testando direttamente i path dei files relativi alla dir iniziale)
+    Tests: date alcune directories contenenti file con estensioni diverse a diverse profondita', 
+    si chiama la funzione e si controlla che i file contenuti nelle directories esistano/non esistano a seconda del caso 
+    (senza usare una soluzione ricorsiva ma testando direttamente i path dei files relativi alla dir iniziale)
     Test: che la funzione sia ricorsiva
     """
     #inserisci qui il tuo codice
+    
+    pass
+
+if __name__ == '__main__':
+    es69('t2', 3, ['jpg', 'png'])
