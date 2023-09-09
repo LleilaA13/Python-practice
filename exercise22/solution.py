@@ -1,7 +1,7 @@
 import images
 
 def es42(fImageIn, fcolors, fImageOut):
-    img = immagini.load(fImageIn)
+    img = images.load(fImageIn)
     h = len(img)
     w = len(img[0])
     count = 0
@@ -16,5 +16,5 @@ def es42(fImageIn, fcolors, fImageOut):
             if c in palette:
                 img[y][x] = palette[c]
                 count += 1
-    immagini.save(img, fImageOut)
+    images.save(img, fImageOut)
     return count
