@@ -24,7 +24,8 @@ def es69(dir, profondita, estensioni):
     """
     #inserisci qui il tuo codice
     
-    pass
+    pass  ggbgg
+
 
 if __name__ == '__main__':
     es69('t2', 3, ['jpg', 'png'])
