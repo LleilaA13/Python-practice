@@ -4,6 +4,7 @@
 ################################################################################
 ################################################################################
 ################################################################################
+# %%
 
 """ Steps to do FIRST:
  1) save this file as program.py
@@ -209,10 +210,9 @@ def func4(input_filename):
     return T
 
 
-print(func4('func4/in_1.txt'))
+# print(func4('func4/in_1.txt'))
 
 # %% ---------------------------- FUNC 5 ---------------------------- #
-
 '''
 Func 5: 8 points
 
@@ -259,9 +259,41 @@ and will return the pair (2, 1)
 
 
 def func5(txt_input, width, height, png_output):
-    pass
+    directions = {
+        "diagonalDOWN": (1, 1),
+        "diagonalUP": (1, -1)
+    }
 
-# func5('func5/in_1.txt', 50, 100, 'func5/your_image_1.png')
+    img = [[(0, 0, 0) for _ in range(width)]for _ in range(height)]
+    lista = [0, 0]  # risultato
+    with open(txt_input, encoding='utf8') as f:
+        for line in f:
+            dir, r, g, b, start_x, start_y, L = line.split()
+
+            col = (int(r), int(g), int(b))
+            pos = [int(start_x),  int(start_y)]
+            L = int(L)
+
+            if dir == "diagonalUP":
+                lista[0] += 1
+            else:
+                lista[1] += 1
+
+            dir = directions[dir]
+
+            for _ in range(L):
+                x, y = pos
+                if x >= 0 and x < width and y >= 0 and y < height:
+                    img[y][x] = col
+
+                pos[0] += dir[0]
+                pos[1] += dir[1]
+
+    images.save(img, png_output)
+    return tuple(lista)
+
+
+# print(func5('func5/in_1.txt', 50, 100, 'func5/your_image_1.png'))
 # ---------------------------- EX 1 ---------------------------- #
 
 
@@ -300,7 +332,15 @@ Example:
 
 
 def ex1(root: NaryTree, valori: list[int]):
-    pass
+
+    if valori:
+        root.value += valori[0]
+
+    s = root.value
+    for child in root.sons:
+        s += ex1(child, valori[1:])
+
+    return s
 
 
 # %% ----------------------------------- EX.2 ----------------------------------- #
@@ -341,10 +381,41 @@ Ex2: recursive, 3 + 3 points
 
 
 def ex2(dirin, words):
-    pass
+
+    res = rec_ex2(dirin, words)
+
+    # do some cleanup
+    risultato = [(k, v)for k, v in res.items()]
+    ris_sortato = sorted(risultato, key=lambda tup : (-tup[1], tup[0]))
+    return ris_sortato
+
+
+def rec_ex2(dirin, words):
+    diz = {word: 0 for word in words}
+    text = ''
+    for p in os.listdir(dirin):
+        p = os.path.join(dirin, p)
+        if os.path.isdir(p):
+            d = rec_ex2(p, words)
+
+            for k, v in d.items():
+                diz[k] = diz.get(k, 0) + v
+
+        elif p.endswith(".txt"):
+            with open(p, encoding='utf8') as f:
+                text = f.read()
+            text = text.split()
+            for word in text:
+                if word in diz.keys():
+                    diz[word] += 1
+
+    return diz
+
+
+print(ex2("ex2", ["cat", "dog"]))
+
 
 ######################################################################################
-
 
 if __name__ == '__main__':
     print('*' * 50)

@@ -245,10 +245,7 @@ Esempio:
 '''
 
 from nary_tree import NaryTree
-
-
-def ex1(root : NaryTree, valori : list[int]):
-    pass
+pass
 
 
 # %% ----------------------------------- EX.2 ----------------------------------- #
