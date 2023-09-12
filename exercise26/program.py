@@ -13,4 +13,11 @@ def es76(word):
     ['fondamenti', 'ondamenti', 'ndamenti', 'damenti', 'amenti', 'menti', 'enti', 'nti', 'ti', 'i']
 
     '''
-    # insert here your code
+
+    if not word:
+        return []
+    else:
+        return [word] + es76(word[1:])
+
+if __name__ == '__main__':
+    print(es76("fondamenti"))
