@@ -5,7 +5,10 @@ import os.path
 def es71(dir, minimum, maximum, depth=0):
     depths = {}
     for f in os.listdir(dir):
-        fn = "{}/{}".format(dir, f)
+        if f.startswith("."):
+            continue
+
+        fn = os.path.join(dir, f)
         if os.path.isdir(fn):
             diz = es71(fn, minimum, maximum, depth+1)
             for k, v in diz.items():

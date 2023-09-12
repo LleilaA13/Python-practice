@@ -5,7 +5,7 @@ import random
 from ddt import file_data, ddt, data, unpack
 import isrecursive
 
-import program
+import solution as program
 
 
 @ddt
@@ -29,14 +29,13 @@ class Test(testlib.TestCase):
             isrecursive.undecorate_module(program)
 
         with self.ignored_function('builtins.print'), \
-             self.forbidden_function('os.walk'):
-             #self.timer(2):
+                self.forbidden_function('os.walk'):
+            # self.timer(2):
             result = program.es71(path, minp, maxp)
         self.assertEqual(type(result), dict,
                          "Il risultato non è un dizionario")
         self.assertEqual(
             result, expected, f"Il risultato deve essere {expected} invece che {result}")
-
 
     @data(
         ('t4', 0, 100, {'looney-tunes.txt': 3, 'minnie.txt': 4}),

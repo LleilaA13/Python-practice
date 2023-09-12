@@ -1,6 +1,8 @@
+import os
+import os.path
 
 
-def es71(dir, minimum, maximum):
+def es71(dir, minimum, maximum, depth=0):
     """Define the recursive function (or a function that uses your own
     recursive function) es71(dir, minimum, maximum) that searches in
     the directory dir the files that have a size between minimum and
@@ -13,5 +15,25 @@ def es71(dir, minimum, maximum):
     function
 
     """
-    # insert here your code
 
+    diz = {}
+    for p in os.listdir(dir):
+
+        if p[0] == ".":
+            continue
+        p = os.path.join(dir, p)
+        if os.path.isdir(p):
+            d = es71(p, minimum, maximum, depth + 1)
+            for k, v in d.items():
+                diz[k] = max(diz.get(k, 0), v)
+
+        if os.path.isfile(p):
+            size = os.stat(p).st_size
+            if size >= minimum and size <= maximum:
+                diz[os.path.basename(p)] = depth
+
+    return diz
+
+
+if __name__ == '__main__':
+    print(es71('t4', 0, 100,))
