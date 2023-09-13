@@ -1,0 +1,10 @@
+{
+    "id": 13, 
+    "description": "Modify the color of an image in a .png file and save the obtained image in a second file, return the number of distinct colors of the image", 
+    "text": "Design a function ex13(fimm1,fimm2) such that, \n    - it receives as argument path names of two .PNG files ('fimm1'\n      and 'fimm2')\n    - it reads and modifies the image stored in 'fimm1' and then saves\n      the new image into 'fimm2' file\n    - it returns the number of DIFFERENT colors present in the\n      modified image.\n    The color of each pixel of the original image is modified with the\n    following procedure:\n    - the tuples of the DIFFERENT colors in the first image are\n      ordered in ascending order\n    - the ordered sequence of tuples is, then, divided into ordered\n      groups of 50 (if the total number of tuples is not a multiple of\n      50, then the last group will have less than 50 elements)\n    - all the colors in a given group will be modified with the first\n      color of the group.\n    This implies that the pixels with colors belonging to the same\n    group will alll have the same color, corresponding to the first\n    color of the group.\n\n    Example: the function should transform the image of Foto2.png into\n    the image of RisFoto2.png and return the value 4.\n\n    To load and save the image in PNG files, use the load and save\n    functions of the images.py library.", 
+    "algorithm": "Load image 1\n save the distinct pixels in a list and sort them \n save how many groups of pixels you have \n divide the pixels in groups of 50 \n for each row of img1 for each column of img1 \n\t for each element of the list of pixel groups \n\t\t if the pixel is in the list \n\t\t\t set the pixel to the first element of the list \n save the image \n return the number of distinct pixels of the image", 
+    "tags": ["Images"], 
+    "effort": 4,
+    "clues": [],
+    "from":"esame-8-1-19"
+}

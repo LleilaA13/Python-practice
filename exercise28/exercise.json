@@ -1,0 +1,10 @@
+{
+    "id": 4, 
+    "description": "It takes as input an image, a path, and two numbers, modifies the image according to the two numbers, saves the image to the path and returns the color that appears most often in the image", 
+    "text": "Design a function ex4(fimm1,fimm2) such that:\n    - it receives as arguments two filenames 'fimm1' and 'fimm2',\n      where 'fimm1' is a file with an .PNG image, and two integers\n      'h1' and 'w1', both greater than zero;\n    - it reads the image in 'fimm1' and creates a new image that\n      saves as a PNG image in the 'fimm2' file;\n    - it returns a tuple with the color that appears most often in the\n      original image and, in case of tie, the one that precedes the\n      others in ascending order.\n    The new image has h1 times the height of the original image and w1\n    times the width of the original image. Each pixel of the original\n    image corresponds in the new image to a rectangle of pixels with\n    the same color and with height h1 and width w1.\n\n    To load and save the image in PNG files, use the load and save\n    functions of the images.py library.\n", 
+    "algorithm": "", 
+    "tags": ["Images"], 
+    "effort": 5,
+    "clues": [],
+    "from":"esame-7-11-18"
+}
