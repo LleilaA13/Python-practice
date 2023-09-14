@@ -266,13 +266,36 @@ os.listdir, os.path.isfile, os.path.exists, etc.
 NOTE: we strongly suggest dividing the exercise into subproblems
 organizing the code into small functions for each subproblem.
 """
-
-
+def conv(files):
+    out = ''
+    files = sorted(files)
+    for f in files:
+        with open(f, encoding='utf8') as fr:
+            values = fr.read().split()
+            out += ''.join([chr(int(c)) for c in values])
+    return out
 def ex1(root):
     # write here you code
-    pass
-print(ex1('ex1_A'))
+    diz = {}
+    files = []
+    for p in os.listdir(root):
+        p = os.path.join(root, p)
+        if os.path.isdir(p):
+            diz.update(ex1(p))
 
+        if os.path.isfile(p) and p.endswith('txt'):
+            files.append(p)
+    if files:
+        diz[root] = conv(files)
+    return diz
+
+
+
+
+
+
+        
+print(ex1('ex1_A'))
 # %% ----------------------------------- EX.2 ------------------------- #
 """
 Ex2: 8 punti
