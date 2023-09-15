@@ -329,11 +329,21 @@ you fail the recursive test.
 NOTE: we strongly suggest dividing the exercise into subproblems
 organizing the code into small functions for each subproblem.
 """
-
-
+def gen_o(nums, ops):
+    if not nums:
+        return ['']
+    if len(nums) == 1:
+        return list(map(str, nums))
+    return [''.join([str(num), op, gn])
+            for num in nums
+            for op in ops
+            for gn in gen_o(nums - {num}, ops)
+            ]
 def ex2(nums, ops):
     # write here you code
-    pass
+    return set(gen_o(nums, ops))
+
+print(ex2({5, 8, 0},  ops=['+', '*']))
 
 
 ###################################################################################

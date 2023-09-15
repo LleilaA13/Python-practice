@@ -68,7 +68,7 @@ def func1(dict1, dict2):
         if k1 in dict2:
             diz[k1] = [v for v in dict1[k1] if v not in dict2[k1]] + \
                 [v for v in dict2[k1] if v not in dict1[k1]]
-            diz[k1].sort(key=lambda x: (-len(x), x))
+            diz[k1].sort(key=lambda v: (-len(v), v))
     return diz
 
 
@@ -98,14 +98,13 @@ expected   = { 's':2, 'l':4, 'p':6, 'c':6}
 def func2(text):
     text = text.lower()
     text = text.split()
-    diz = {}
+    diz = dict()
     for word in text:
-        for s in range(len(word)):
-            if s == 0:
-                diz[word[s]] = 0
-    # print(diz)
-    for word in text:
-        for k in diz.keys():
+        initial = word[0]
+        diz[initial] = 0
+
+    for k in diz.keys():
+        for word in text:
             if k in word:
                 diz[k] += 1
     return diz
@@ -145,25 +144,19 @@ and return the value 5
 
 
 def func3(textfile_in, textfile_out):
-    text = ''
-
-    with open(textfile_in, encoding='utf8') as f1:
-        text = f1.read()
-
+    with open(textfile_in, encoding='utf8') as f:
+        text = f.read()
     text = text.split()
     count = len(text)
-    text.sort(key=lambda x: (
-        -len(x.translate(str.maketrans("", "", ".+-"))),
-        float(x))
-    )
-    text = ', '.join(text)
-    with open(textfile_out, mode='w', encoding='utf8') as f2:
-        f2.write(f'{text}')
-
+    text.sort(key = lambda x : (-len(x.translate(str.maketrans("", "", "+-."))), float(x)))
+    text = ", ". join(text)
+    with open(textfile_out, mode = 'w', encoding = 'utf8') as fr:
+        fr.write(text)
     return count
 
 
-# print(func3('func3/in_1.txt', 'func3/out_1.txt'))
+
+#print(func3('func3/in_1.txt', 'func3/out_1.txt'))
 
 # %% ---------------------------- FUNC 4 ---------------------------- #
 
@@ -193,24 +186,18 @@ the function should return the matrix reflected with respect to the diagonal
 
 
 def func4(input_filename):
+    matrix = []
     with open(input_filename, encoding='utf8') as f:
-        mat = [
-            [int(v) for v in line.split()] for line in f
-        ]
-    N = len(mat)
-    M = len(mat[0])
-
-    # transpose
-    T = [[mat[i][j] for i in range(N)] for j in range(M)]
-    # reflect rows
-    T = T[::-1]
-    # reflect cols
+        for line in f:
+            matrix.append([int(v) for v in line.split()])
+    h = len(matrix)
+    w = len(matrix[0])
+    T = [[matrix[x][y]for x in range(h)] for y in range(w)]
+    T = T[::-1] 
     T = [row[::-1] for row in T]
-
     return T
-
-
-# print(func4('func4/in_1.txt'))
+    
+print(func4('func4/in_1.txt'))
 
 # %% ---------------------------- FUNC 5 ---------------------------- #
 '''
@@ -386,7 +373,7 @@ def ex2(dirin, words):
 
     # do some cleanup
     risultato = [(k, v)for k, v in res.items()]
-    ris_sortato = sorted(risultato, key=lambda tup : (-tup[1], tup[0]))
+    ris_sortato = sorted(risultato, key=lambda tup: (-tup[1], tup[0]))
     return ris_sortato
 
 
@@ -412,7 +399,7 @@ def rec_ex2(dirin, words):
     return diz
 
 
-print(ex2("ex2", ["cat", "dog"]))
+#print(ex2("ex2", ["cat", "dog"]))
 
 
 ######################################################################################
