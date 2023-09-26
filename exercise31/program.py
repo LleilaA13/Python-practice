@@ -20,22 +20,24 @@
     - the function returns the string '48 63 39 88 5 48 93'
 
     '''
-def es20(string1: str) ->  str :
+
+
+def es20(string1: str) -> str:
     string1 = string1.lower().split()
     ls = []
-
     alf = 'abcdefghilmnopqrstuvz'
-    diz = {alf[i] : i + 1 for i in range(len(alf))}
+
+    diz = {alf[i]: i + 1 for i in range(len(alf))}
+
     for s in string1:
         n = 0
         for char in s:
             if char in diz:
                 n += diz[char]
         ls.append(str(n))
+
     res = " ".join(ls)
     return res
-    
-
 
 
 print(es20('Angelo Monti Andrea Sterbini e Angelo Spognardi'))
