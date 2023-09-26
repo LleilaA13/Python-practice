@@ -1,5 +1,4 @@
-def es20(string1):
-    '''Consider the alphabetical order of the 21 letters of the Italian alphabet:
+'''Consider the alphabetical order of the 21 letters of the Italian alphabet:
     A – B – C – D – E – F – G – H – I – L – M – N – O – P – Q – R – S – T – U – V – Z
 
     we define the value of a letter as the position it has in this
@@ -7,7 +6,7 @@ def es20(string1):
     value of Z is 21). 
 
     Design function es20(string1) that takes as an input 
-  
+
     - string1, a string containing words composed with letters from
     the Italian alphabet, separated by a space
 
@@ -21,4 +20,22 @@ def es20(string1):
     - the function returns the string '48 63 39 88 5 48 93'
 
     '''
-    pass
+def es20(string1: str) ->  str :
+    string1 = string1.lower().split()
+    ls = []
+
+    alf = 'abcdefghilmnopqrstuvz'
+    diz = {alf[i] : i + 1 for i in range(len(alf))}
+    for s in string1:
+        n = 0
+        for char in s:
+            if char in diz:
+                n += diz[char]
+        ls.append(str(n))
+    res = " ".join(ls)
+    return res
+    
+
+
+
+print(es20('Angelo Monti Andrea Sterbini e Angelo Spognardi'))
