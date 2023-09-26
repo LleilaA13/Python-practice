@@ -1,0 +1,10 @@
+{
+	"id": 20,
+	"description": "Transformation of a string into a number by summing character values",
+	"text": "\n Consider the alphabetical order of the 21 letters of the Italian alphabet:\n    A – B – C – D – E – F – G – H – I – L – M – N – O – P – Q – R – S – T – U – V – Z\n\n    we define the value of a letter as the position it has in this\n    order, starting from 1 (for example the value of A is 1 while the\n    value of Z is 21). \n\n    Design function es20(string1) that takes as an input \n  \n    - string1, a string containing words composed with letters from\n    the Italian alphabet, separated by a space\n\n    - and returns the string obtained by substituting each word in\n    string1 with a numeric string, representing the sum of all the\n    values of the letters in that word.  No distinction is made\n    between uppercase and lowercase letters.\n\n    For example,\n    - if string1='Angelo Monti Andrea Sterbini e Angelo Spognardi'\n    - the function returns the string '48 63 39 88 5 48 93'\n",
+	"algorithm": "",
+	"tags": ["Strings"],
+	"clues": [],
+	"effort": 4,
+	"source": "recupero-7-11-18"
+}

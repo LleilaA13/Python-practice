@@ -1,0 +1,10 @@
+{
+    "id": 3,
+    "description": "It takes two sets of natural numbers as input, returns a list of triples (a, b, c) such that: a, b and c are in the first input set, a < b < c, and (a + b + c) is in the second input set",
+    "text": "Design a function ex3(set1, set2) that\n- takes two sets of natural numbers as input,\n- finds all triples (a,b,c) such that:\n  - a, b and c are in set1\n  - a < b < c and\n  - (a + b + c) is in set2\n- returns the set of all such triples.\nNotice that the returned triples should be represented as tuples in a list. Those\ntuples should be sorted based on the sum of their components in ascending\norder. If two tuples map to an equivalent sum, they should be sorted by ascending\nlexicographic order.\nEXAMPLE:\nGiven set1={2, 4, 5, 6, 8, 9} and set2={5, 15, 19, 25}, the function returns the\nfollowing list:\n[(2, 4, 9), (2, 5, 8), (4, 5, 6), (2, 8, 9), (4, 6, 9), (5, 6, 8)]\n",
+    "algorithm": "ex3(set1, set2):\n\tif set1 has less than 3 elements:\n\t\treturn []\n\tsave set1 items in a l1 list and sort them\n\tinitialize an empty result list\n\tfor each element a in l1[:-2]:\n\t\tfor each element b in l1[index of a + 1: -1]:\n\t\t\tfor each element c in l1[index of b + 1:]:\n\t\t\t\tif a+b+c is in set2:\n\t\t\t\t\tadd tuple (a, b, c) to result\n\tsort the result lexicographically\n\treturn the result sorted by the sum of the elements in the tuples",
+    "tags": ["Sets", "Sorting", "Lists"],
+    "effort": 4,
+    "clues": [],
+    "from":"esame-7-11-18"
+}
