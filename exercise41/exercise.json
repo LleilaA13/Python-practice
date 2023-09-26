@@ -1,0 +1,10 @@
+{
+    "id": 59,
+    "description": "Given a text file with integer rows inside, it returns a string of '0' or '1', at the i-th position the string contains '1' if the sum of the integers of the i-th row of the file is odd.",
+    "text": "\n    Design the function es6(ftext) which returns a string of characters\n    made only of '0's or '1's.  The string has as many characters '0'\n    or '1' as the number of rows in the text file whose path is given\n    by ftext. The text file contains rows of integers separated by an\n    arbitrary number of spaces.\n    The i-th character of the string is '0' if the sum of the integers\n    present in the i-th row of the file is an even number.\n    The i-th character of the string is '1' if the sum of the integers\n    in the i-th row of the file is an even number.\n    ",
+    "algorithm": "Initialize an empty string\nopen the file:\n\tfor each row:\n\t\ttransforms the row into an array of integers\n\t\tadd to the string the module 2 of the sum of all the elements of the array\nreturn the string",
+    "tags": ["File", "Strings"],
+    "effort": 4,
+    "clues": [],
+    "from": "recupero-23-1-18"
+}

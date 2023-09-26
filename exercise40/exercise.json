@@ -1,0 +1,10 @@
+{
+    "id": 58,
+    "description": "Given a list of strings representing robot moves as chars in the set {'N', 'S', 'E', 'O'}, modify the list by removing the strings and putting integer numbers, return the total number of characters in the list.",
+    "text": "Write the function es58(list) that takes as input\n    - a list of strings whose characters are in the set {'N','E','S','O'}\n\n    and destructively modifies it, returning the total number of\n    characters present in the list (i.e. the sum of the number of\n    characters of the strings in the input list).\n\n    Each string represents a sequence of moves made by a robot on a\n    grid: the robot can move from one cell to one of the adjacent\n    cells in the 4 directions.  Each character of the string\n    represents a move in one of the 4 directions: N stands for a move\n    upwards, E for a move towards the right cell, S for one move\n    downwards and O for one move towards the left cell.\n\n    Each string in the list represents a path that, from the starting\n    cell, makes the robot reaching a certain destination cell.\n\n    At the end of the function each string in the list must be\n    replaced by a number.  The number represents the minimum number of\n    moves the robot needs to make to get from the starting cell to the\n    destination cell, identified by the string.\n\n    For example for list=[ 'NS', 'NEESS', 'NNOOO','NNEESSO'], the\n    function returns the number 19 and the list becomes [0,3,5,1].\n\n   ",
+    "algorithm": "Initialize a dictionary with the 4 possible moves\n\tN = (-1,0)\n\tS = (1, 0)\n\tE = (0, 1)\n\tO = (0, -1)\nInitialize a counter for the characters\n for each string in the list:\n\tinitialize x, y to 0\n\tfor each character in the string: \n\t\tif the character is a valid move:\n\t\tincrease the character counter\n\t\tupdate x and y according to the values of the dictionary\n\tchange the string with the sum of the absolute value of x and y\nreturn the counter",
+    "tags": ["Lists", "Strings"],
+    "effort": 4,
+    "clues": [],
+    "from": "recupero-23-1-18"
+}

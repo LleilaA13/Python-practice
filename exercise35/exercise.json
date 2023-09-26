@@ -1,0 +1,10 @@
+{
+    "id": 32,
+    "description": "Given a json file, retunr a list of tuples (A, B)",
+    "text": "Design and implement a function ex32(fname1) such that:\n    - it takes as argument the path of a json file.  The json file\n    contains a list of strings and each string is composed of by\n    decimal digits\n    - it returns a list of integers.\n    The returned list has many elements as the original list, but each\n    string is replaced by a tuple of two integers.\n    The first element of the tuple is the sum of the odd digits of the\n    string. The second element of the tuple is the sum of the even\n    digits of the string.\n\n    Example: if 'fname1' contains the list\n    ['11','24','134','1','2876'], the function will return the list\n    [(2,0), (0,6), (4,4), (1,0), (7,16)]",
+    "algorithm": "Open the json file and save the contents in a variable \n initialize an empty list \n for each json string: \n\t initializes the counter for even and odd at 0 \n\t for each character of the string: \n\t\t if it is odd: \n\t\t\t increases the odd counter of the character value\n\t\t otherwise: \n\t\t\tincrease the even counter by the value of the character \n\t add the pair (odd, even) to the list \n return the list ",
+    "tags": ["Json", "Files", "Strings"],
+    "effort": 4,
+    "clues": [],
+    "from": "recupero-15-2-18"
+}

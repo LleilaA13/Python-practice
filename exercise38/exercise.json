@@ -1,0 +1,10 @@
+{
+    "id": 55,
+    "description": "Given a character, two integers and a matrix, returns the tuple with the minimum and maximum between the elements of the matrix, switch the rows or columns of the matrix indicated by the two integers in input.",
+    "text": "The function es55(sel,m,n,A) receives as an input:\n\n    - a string of text containing one character 'r' or 'c'\n    - two integers m and n\n    - matrix A of integers (represented by a list of lists in which\n      each list is a line of the matrix)\n\n    and returns the pair (tuple) of integers with the minimum and\n    maximum between the elements of the matrix. At the end, the matrix\n    has to be modified in the following way:\n\n      -if sel='r', then row m and row n of the matrix A are swapped.\n      -if sel='c', then column m and column n of the matrix A are swapped.\n\n    It can be assumed that the dimensions h and w of the matrix are\n    such that m,n<=h and m,n<=w.\n    \n    For example: \n\n    - for sel='r', m=1,n=2 and A=[[2,0,-4],[5,10,20],[5,1,-1]] at the\n      end of the execution of the function returns the tuple (-4,10)\n      and A=[[2,0,-4],[5,1,-1],[5,10,20]]\n\n    - for sel='c', m=0,n=1 and A=[[2,0,-4],[5,10,20],[5,1,-1]] at the\n      end of the execution of the function the tuple (-4,10) will be\n      returned and you will have A=[[0,2,-4],[10,5,20],[1,5,-1]].\n",
+    "algorithm": "Set the min and max to the first element of the matrix (m[0][0])\n for each element of the matrix \n\t update the min and the max\nif m != n\n\tif sel = 'r':\n\t\t switch the rows\n\t otherwise:\n\t\t switch the columns\nreturn the tuple (min, max)",
+    "tags": ["Matrices"],
+    "effort": 4,
+    "clues": [],
+    "from": "recupero-23-1-18"
+}

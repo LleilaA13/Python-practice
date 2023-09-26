@@ -1,0 +1,10 @@
+{
+    "id": 21,
+    "description": "Given a character matrix, returns a new matrix with the columns in lexicographic order respect to the input matrix",
+    "text": "\n    Design function es21(matrix) that takes as input a matrix of\n     characters represented by a list of character lists and returns a\n     new matrix where the columns of the input matrix are\n     alphabetically ordered. At the end of the function, the input\n     matrix should not be modified.\n\n     For example, if the input matrix is\n     [['q','s','g','g'],\n      ['b','a','m','f'],\n      ['a','b','n','z']] \n\n    the function will return the matrix:\n     [['a','a','g','f'],\n      ['b','b','m','g'],\n      ['q','s','n','z']]\n     \n",
+    "algorithm": "I initialize an empty m matrix equal to the input matrix\nfor each column\n\tadd the column in a list\n\tI order the column\n\tI insert the elements of the column ordered in m\nreturn m",
+    "tags": ["Matrices", "Sorting"],
+    "effort": 4,
+    "clues": [],
+    "from": "recupero-12-7-18"
+}

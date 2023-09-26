@@ -1,0 +1,10 @@
+{
+    "id": 41,
+    "description": "When you input a text file containing a list of integers, it returns the number that appears most frequently in the sequence derived from S",
+    "text": "Given a sequence S of integers, we define sequence derived from S\n    the sequence of n integers where the i-th element is given by the\n    sum of the first i integers of S.\n    For example: the sequence derived from \n    S= 2, -3, -4, 4, 4, -5, 3, 1.-1 is\n       2, -1, -5, -1, 3, -2, 1, 2, 1.\n    \n    Design and implement a function ex41(fname) such that:..................\n    - it takes as arguments the path of a text file 'fname', where it\n      is stored a sequence S of integers, separated by a comma and\n      some white spaces\n    - it returns the number that appears most frequently in the\n      sequence derived from S. If there are several numbers with the\n      highest number of repetitions, the maximum one is returned.\n    Example: if the 'fname' file contains the sequence S= 2, -3, -4,\n    4, -5, 3, 1, -1 the function returns the value 2.\n",
+    "algorithm": "Save the integers in the file in a list \n calculate the derived sequence \n initialize a dictionary for the frequencies of the integers in the derived sequence \n initialize a dictionary for each integer in the derived sequence: \n\t update its value in the dictionary \n create a list of pairs (key, value) of the dictionary \n return the second element of the maximum torque",
+    "tags": ["Files", "Strings", "Dictionaries"],
+    "effort": 4,
+    "clues": [],
+    "from": "recuper-16-3-18"
+}

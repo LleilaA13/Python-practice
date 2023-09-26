@@ -1,0 +1,10 @@
+{
+    "id": 35,
+    "description": "Given a path to a directory and a set of words, returns a dictionary of the words contained in the .txt files within the directory",
+    "text": "\n    Design the function  es35(dir1, word_set), that takes as inputs:\n        dir1:   the path of a directory\n        word_set:  a set of words (character strings between 'a' and 'z')\n    and does the following:\n\n    it searches in dir1 for files with extension .txt that contain any\n    string present in word_set and returns a dictionary of the found\n    words. The function does not considers dir1 subdirectories.  The\n    returned dictionary only contains the words actually found within\n    the .txt files in dir1 and the attribute of each key is a tuple of\n    two integers. The first element of the tuple is the total number\n    of times the word can be found in dir1 .txt files. The second\n    element of the tuple is the number of different dir1 .txt files in\n    which the word can be found.\n\n    A word is a sequence made of characters between 'a' and 'z'.  All\n    dir1 .txt files contain only words separated by spaces, tabs or\n    new line characters, namely, there are no capital letters or punctuation\n    marks.",
+    "algorithm": "Initialize the dictionary with the words to search and counters to 0\nfor each .txt file in the directory:\n\tI extract the words of the text\n\tfor each word\n\t\tif it is a word of the set:\n\t\t\tupdate the counter in the dictionary\n\tfor each word of the set:\n\t\tif it is in the words of the text:\n\t\t\tI update the counter for the number of files in the dictionary\nreturn a dictionary with only the searched words that have been found in some file.",
+    "tags": ["File", "File Search", "Dictionaries"],
+    "effort": 4,
+    "clues": [],
+    "from": "recuper-16-3-18"
+}

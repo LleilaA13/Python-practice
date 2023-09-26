@@ -1,0 +1,10 @@
+{
+    "id": 64,
+    "description": "Given in input a list of integers, produces a string with the numbers of the list vertically, one digit per line.",
+    "text": "\n     Write the es64 function which takes as input a list of non-negative integers.\n    The function has to produce a string containing the numbers of the list\n    vertically aligned, separated by one space and one digit per line. The numbers\n    should be aligned so that their unit digits are on the same bottom line.\n   \n\n\n Ex: es64([5,69,2090]) returns the string\n        2\n        0\n      6 9\n    5 9 0\n    ",
+    "algorithm": "save the maximum number of the list in m\n initialize rows as the number of digits of m\n create a list with the string representation of each number, aligning to the right, using m columns (function .format()) \n initialize result as an empty string\n for i = 0 to rows-1: \n\t initialize an empty string s\n\t for each string in string_list \n\t\t add to s the character string[i] separated by a space \n\t append a carriage return to s \n\t add s to result \n return result",
+    "tags": ["Strings", "Lists"],
+    "effort": 4,
+    "clues": [],
+    "from": "esame-12-7-18"
+}
