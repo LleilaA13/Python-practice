@@ -13,7 +13,7 @@ class Test(testlib.TestCase):
         with    self.ignored_function('builtins.print'), \
              self.forbidden_function('os.walk'):
              #self.timer(2):
-            result = program.es3(set1, set2)
+            result = program.ex3(set1, set2)
 
         self.assertEqual(result, expected, "the answer is not correct")
 

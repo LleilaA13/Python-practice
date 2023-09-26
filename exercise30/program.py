@@ -18,7 +18,17 @@
 
 
 def ex3(set1, set2):
-  pass
+  l = list(set1)
+  res = []
+  for a in l:
+    for b in l:
+      for c in l:
+        if a < b < c:
+          total = a + b + c
+          if total in set2:
+            res.append((a, b, c))
+  res = sorted(res, key = lambda x : (sum(x), x))
+  return res
 
 
 
