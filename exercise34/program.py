@@ -18,10 +18,25 @@
 def es31(fname1,fname2):
     with open(fname1, encoding = 'utf8') as f:
         text = f.read()
-    text = text.split()
+    lista = text.split()
+    alfa = 'abcdefghijklmnopqrstuvwxyz'
+    count = {k:0 for k in alfa}
+    for word in lista:
+        chars = set(word)
+        for c in chars:
+            if 'a' <= c <= 'z':
+                count[c] += 1
+    counter = 0
+    for k,v in count.items():
+        if v % 2 != 0:
+            counter += 1
+            text = text.replace(k, k.upper())
+    with open(fname2, mode = 'w', encoding='utf8') as f:
+        f.write(text)
+    return counter
 
-    
 
+        
 
 
 
