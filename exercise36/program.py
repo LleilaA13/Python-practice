@@ -1,9 +1,6 @@
 
 import os
-
-
-def es35(dir1, words):
-    """Design the function  es35(dir1, word_set), that takes as inputs:
+"""Design the function  es35(dir1, word_set), that takes as inputs:
         dir1:   the path of a directory
         word_set:  a set of words (character strings between 'a' and 'z')
     and does the following:
@@ -24,4 +21,10 @@ def es35(dir1, words):
     marks.
 
     """
+
+def es35(dir1, words):
+
     # insert here your code
+    pass
+
+print(es35('A', {'a', 'b', 'c', 'd'}))

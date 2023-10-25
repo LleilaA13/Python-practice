@@ -19,3 +19,19 @@ def ex32(fname1):
 
     '''
     # insert here your code
+    with open(fname1, encoding='utf8') as f:
+        strings = json.load(f)
+    lista = []
+    for s in strings:
+        even = odd = 0
+        for c in s:
+            if int(c) % 2 == 0:
+                even += int(c)
+            elif int(c) % 2 != 0:
+                odd += int(c)
+        lista.append((odd, even))
+    return lista
+
+
+if __name__ == '__main__':
+    ex32('file1.json')
