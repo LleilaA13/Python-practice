@@ -1,12 +1,10 @@
 
-    
-def ex41(fname):
-    '''Given a sequence S of integers, we define sequence derived from S
+'''Given a sequence S of integers, we define sequence derived from S
     the sequence of n integers where the i-th element is given by the
     sum of the first i integers of S.
     For example: the sequence derived from 
     S= 2, -3, -4, 4, 4, -5, 3, 1.-1 is
-       2, -1, -5, -1, 3, -2, 1, 2, 1.
+      2, -1, -5, -1, 3, -2, 1, 2, 1.
     
     Design and implement a function ex41(fname) such that:..................
     - it takes as arguments the path of a text file 'fname', where it
@@ -18,10 +16,26 @@ def ex41(fname):
     Example: if the 'fname' file contains the sequence S= 2, -3, -4,
     4, -5, 3, 1, -1 the function returns the value 2.
     '''
-    # insert your code here
+def ex41(fname):
+  with open(fname, encoding='utf8') as f:
+    s = [int(x) for x in f.read().split(',')]
+  derived = []
+  sum = 0
+  for x in s:
+    sum += x
+    derived.append(sum)
+  freq = {}
+  for x in derived:
+    if x in freq:
+      freq[x] += 1
+    else:
+      freq[x] = 1
+  pairs = sorted(freq, key = lambda x : ())
+  print(pairs)
 
 
-
+if __name__ == '__main__':
+  ex41('fsequenza1.txt')
 
 
 

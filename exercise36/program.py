@@ -7,7 +7,7 @@ import os
 
     it searches in dir1 for files with extension .txt that contain any
     string present in word_set and returns a dictionary of the found
-    words. The function does not considers dir1 subdirectories.  The
+    words. The function does not consider dir1 subdirectories.  The
     returned dictionary only contains the words actually found within
     the .txt files in dir1 and the attribute of each key is a tuple of
     two integers. The first element of the tuple is the total number
@@ -22,9 +22,25 @@ import os
 
     """
 
-def es35(dir1, words):
+def es35(dir1, word_set):
 
     # insert here your code
-    pass
+    diz = {w:[0,0] for w in word_set}
+    for fn in os.listdir(dir1):
+        if  not os.path.isdir(fn) and fn.endswith('.txt'):
+            with open(dir1 + '/' + fn) as f:
+                words = f.read().split()
 
+            for w in words:
+                if w in word_set:
+                    diz[w][0] += 1
+            for p in word_set:
+                if p in words:
+                    diz[p][1] += 1
+    return {k: tuple(v) for k, v in diz.items() if v[0]}
+
+
+
+        
 print(es35('A', {'a', 'b', 'c', 'd'}))
+#{'a': (5, 3), 'c': (3, 2), 'b': (1, 1)}
