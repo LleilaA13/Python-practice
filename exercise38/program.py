@@ -1,7 +1,4 @@
-
-
-def es55(sel,m,n,A):
-    '''The function es55(sel,m,n,A) receives as an input:
+'''The function es55(sel,m,n,A) receives as an input:
 
     - a string of text containing one character 'r' or 'c'
     - two integers m and n
@@ -21,7 +18,7 @@ def es55(sel,m,n,A):
     For example: 
 
     - for sel='r', m=1,n=2 and A=[[2,0,-4],[5,10,20],[5,1,-1]] at the
-      end of the execution of the function returns the tuple (-4,10)
+      end of the execution of the function returns the tuple (-4,20)
       and A=[[2,0,-4],[5,1,-1],[5,10,20]]
 
     - for sel='c', m=0,n=1 and A=[[2,0,-4],[5,10,20],[5,1,-1]] at the
@@ -29,6 +26,20 @@ def es55(sel,m,n,A):
       returned and you will have A=[[0,2,-4],[10,5,20],[1,5,-1]].
 
     '''
-    # enter your code here
 
+def es55(sel,m,n,A):
+  vmin = vmax = A[0][0]
+  for r in A:
+    for v in r:
+      vmin = min(vmin, v)
+      vmax = max(vmax, v)
+  if m != n:
+    if sel == 'r':
+      A[m], A[n] = A[n], A[m]
+    else:
+      for r in range(len(A)):
+        A[r][m], A[r][n] = A[r][n], A[r][m]
+  return (vmin, vmax)
 
+if __name__ == '__main__':
+  es55('c', 0, 2, [[2, 0, -4], [5, 10, 20], [5, 1, -1]])

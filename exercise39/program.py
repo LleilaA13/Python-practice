@@ -18,4 +18,22 @@ def es56(table):
 
     '''
     # enter your code here
+    freq = {}
+    mx = 0
+    for lista in table:
+        for el in lista:
+            if el in freq:
+                freq[el] += 1
+            else:
+                freq[el] = 1
+        mx = max(mx, freq[el])
+    ls = [x for x in freq.keys() if freq[x] == mx]
+    for lista in table:
+        for i, el in enumerate(lista):
+            if el in ls:
+                lista[i] = '*'
+    return sorted(ls)
+            
 
+if __name__ == '__main__':
+    es56([[3, 2, 1, 3], [2, 1, 3, 5], [1, 3, 2, 1]])
