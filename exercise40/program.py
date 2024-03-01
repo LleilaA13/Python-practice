@@ -27,4 +27,9 @@ def es58(lista):
     function returns the number 19 and the list becomes [0,3,5,1].
 
     '''
-    #Enter your code here
+    #fai un dizionari con le direzioni corrispondenti ai charatteri, N upwards, E to the right, S downwards and O to the left
+    #counter
+    #replace the string in the list with the number representing the minimum number of moves 
+
+if __name__ == '__main__':
+    es58(['NS', 'NEESS', 'NNOOO', 'NNEESSO'])
