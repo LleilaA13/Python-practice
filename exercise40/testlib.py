@@ -75,8 +75,8 @@ class TestCase(unittest.TestCase):
                 # three at a time in a tuple
                 for i in range(0,len(png_row),3):
                     row.append( ( png_row[i+0],
-                                  png_row[i+1],
-                                  png_row[i+2] ) )
+                                    png_row[i+1],
+                                    png_row[i+2] ) )
                 img.append( row )
         return img
 

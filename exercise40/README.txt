@@ -42,3 +42,4 @@ To be able to perform the tests on this and other exercises, you should install 
 	conda install -c conda-forge ddt
 	conda install -c conda-forge pytest-timeout
 	conda install -c conda-forge pytest-profiling
+

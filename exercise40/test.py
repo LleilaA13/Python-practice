@@ -17,8 +17,8 @@ class Test(testlib.TestCase):
             - expectedLst : list of integer
         '''
         with self.ignored_function('builtins.print'), \
-             self.forbidden_function('os.walk'):
-             #self.timer(2):
+            self.forbidden_function('os.walk'):
+            #self.timer(2):
             result = program.es58(lista)
         self.assertEqual(type(result), int, "The result is not an integer")
         self.assertEqual(
@@ -35,5 +35,6 @@ class Test(testlib.TestCase):
         return self.do_test(lista, expected, expectedLst)
 
 
-# TESTS ARE TO BE PERFORMED IF YOU PERFORM program.py or by calling pytest in the directoryif __name__ == '__main__':
+# TESTS ARE TO BE PERFORMED IF YOU PERFORM program.py or by calling pytest in the directory
+if __name__ == '__main__':
     Test.main()

@@ -1,7 +1,5 @@
 
-
-def es58(lista):
-    '''Write the function es58(list) that takes as input
+'''Write the function es58(list) that takes as input
     - a list of strings whose characters are in the set {'N','E','S','O'}
 
     and destructively modifies it, returning the total number of
@@ -18,7 +16,8 @@ def es58(lista):
     Each string in the list represents a path that, from the starting
     cell, makes the robot reaching a certain destination cell.
 
-    At the end of the function each string in the list must be
+    At the end
+    of the function each string in the list must be
     replaced by a number.  The number represents the minimum number of
     moves the robot needs to make to get from the starting cell to the
     destination cell, identified by the string.
@@ -29,7 +28,23 @@ def es58(lista):
     '''
     #fai un dizionari con le direzioni corrispondenti ai charatteri, N upwards, E to the right, S downwards and O to the left
     #counter
-    #replace the string in the list with the number representing the minimum number of moves 
-
+    #replace the string in the list with the number representing the minimum number of moves
+    
+def es58(lista):
+    movements = {'N' : (-1, 0), 'S': (1, 0), 'E': (0, 1), 'O' : (0, -1)}
+    nmov = 0
+    for i, move in enumerate(lista):
+        x = 0
+        y = 0
+        for c in move:
+            if c in 'NESO':
+                nmov += 1
+                dx, dy = movements[c]
+                x += dx
+                y += dy
+        lista[i] = abs(x) + abs(y)
+    return nmov
+    #print(lista)
 if __name__ == '__main__':
     es58(['NS', 'NEESS', 'NNOOO', 'NNEESSO'])
+    
