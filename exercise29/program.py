@@ -33,8 +33,7 @@ def es2(ls,ftext):
          ls.remove(text[i]+ text[i+1])
          count += 1
 
-   return count
-
+   print(count)
 
 
 if __name__ == '__main__':

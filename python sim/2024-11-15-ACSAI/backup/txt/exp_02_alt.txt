@@ -1,0 +1,4 @@
+bike plane bus train boat car
+date apple cherry banana
+blue yellow purple green red
+six four seven three five two one
