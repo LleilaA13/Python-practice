@@ -276,7 +276,7 @@ def ex1(dirin):
     return sorted(fnames.keys(), key = lambda x: (-fnames[x], x.count('/'), x))
     pass
 
-# print(ex1(2,3))
+print(ex1('ex1/A'))
 
 # %% ----------------------------------- EX.1 ------------------------- #
 """

@@ -20,9 +20,9 @@ The final grade is the sum of the scores of the solved problems.
 IMPORTANT: set DEBUG = True in `grade.py` to improve debugging; but
 remember that recursion is tested (and graded) only if DEBUG = False
 """
-name       = "NAME"
-surname    = "SURNAME"
-student_id = "MATRICULATION NUMBER"
+name       = "Leila"
+surname    = "Zanoni"
+student_id = "2033176"
 
 #########################################
 
@@ -43,8 +43,19 @@ and the function returns 3.
 
 def func1(a_list):
     # your code goes here
-    pass
+    res = len(a_list)
+    l = []
 
+    for lista in a_list:
+        p = 1
+        for x in lista:
+            p *= x
+        l.append(p)
+            
+    a_list[:] = l
+    return res
+            
+#print(func1([[1, 2, 3], [-1, 2, 3], [2, 2, -2]]))
 
 # %%  ---- FUNC2 ----
 ''' func2: 2 marks

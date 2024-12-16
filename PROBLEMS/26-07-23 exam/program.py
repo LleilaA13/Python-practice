@@ -103,7 +103,7 @@ def func2(text):
 
 if __name__ == '__main__':
     text = 'sOtto lA panca La caPra Canta Sopra LA Panca La CaPra crepa'
-    print(func2(text))
+    #print(func2(text))
 
 # ---------------------------- FUNC 3 ---------------------------- #
 '''
@@ -150,7 +150,7 @@ def func3(textfile_in, textfile_out):
     return len(numeri)
     
 
-print(func3('func3/in_1.txt', 'func3/out_1.txt'))
+#print(func3('func3/in_1.txt', 'func3/out_1.txt'))
 
 #%% ---------------------------- FUNC 4 ---------------------------- #
 
@@ -177,7 +177,20 @@ the function should return the matrix reflected with respect to the diagonal
  [ 9, 5, 1]]
 '''
 def func4(input_filename):
-    pass
+    matrice = []
+    with open(input_filename) as f:
+        for line in f:
+            line = [int(c) for c in line.split()]
+            matrice.append(line)
+    
+    N = len(matrice)
+    M = len(matrice[0])
+    
+    result = [[matrice[r][c] for r in reversed(range(N))] for c in reversed(range(M))]
+    return result
+    
+            
+    
 
 #print(func4('func4/in_1.txt'))
 
@@ -229,9 +242,39 @@ and will return the pair (2, 1)
 
 import images
 def func5(txt_input, width, height, png_output):
-    pass
+    def diagonalDOWM(img, W, H, x, y, L, color):
+        for i in range(L):
+            X, Y = x + i, y + i
+            if 0 <= Y < H and 0 <= X < W:
+                img[Y][X] = color
+                
+    def diagonalUP(img, W, H, x, y, L, color):
+        for i in range(L):
+            X, Y = x + i, y - i
+            if 0 <= Y < H and 0 <= X < W:
+                img[Y][X] = color
+    
+    img = [[(0, 0, 0)]*width for _ in range(height)]
+    diagUP = diagDOWN = 0            
+    with open(txt_input) as f:
+        for line in f:
+            tipo, *data = line.split()
+            R, G, B, x, y, L = list(map(int, data))
+            if tipo == 'diagonalDOWN':
+                diagDOWN += 1
+                diagonalDOWM(img, width, height, x, y, L, (R, G, B))
+            elif tipo == 'diagonalUP':
+                diagUP += 1
+                diagonalUP(img, width, height, x, y, L, (R, G, B))
+                
+    images.save(img, png_output)
+    
+    return diagUP, diagDOWN
+                
+                
+                
 
-#func5('func5/in_1.txt', 50, 100, 'func5/your_image_1.png')
+print(func5('func5/in_1.txt', 50, 100, 'func5/your_image_1.png'))
 # ---------------------------- EX 1 ---------------------------- #
 
 '''
@@ -270,7 +313,26 @@ Example:
 from nary_tree import NaryTree
 
 def ex1(root : NaryTree, valori : list[int]):
-    pass
+    return _ex1(root, valori, 0) #ritorna il return di _ex1 : total
+
+def _ex1(root : NaryTree, valori : list[int], depth : int):
+    
+    #se la lunghezza della lista è maggiore della profondità dell'albero, modifica, sennò lasciarli stare
+    if depth < len(valori):
+        root.value += valori[depth] #modifichi con il valore che sta a indice == depth in cui sta la root
+    #incrementiamo il nostro totale con il valore ottenuto, no c'è il più perche essendo una funzione ricorsiva, stiamo lavorando come se fosse un singolo nodo
+    #è la ricorsione a incrementare il totale
+    totale = root.value
+    
+    #ora occupiamoci dei figli; Essendo un albero ennario, non si tratta più di left oro right, ma dei sons in generale
+    #ecco l'incremento ricorsivo di total!
+    for son in root.sons:
+        totale += _ex1(son, valori, depth + 1) #incrementiamo la nostra depth per scorrere attraverso l'albero
+    
+    return totale
+        
+    
+    
 
 
 # %% ----------------------------------- EX.2 ----------------------------------- #
@@ -311,7 +373,23 @@ Ex2: recursive, 3 + 3 points
 
 import os
 def ex2(dirin, words):
-    pass
+    for f in os.listdir(dirin):
+        fullpath = dirin + '/' + f
+        if os.path.isdir(fullpath):
+            ex2(fullpath, words)
+            
+        elif os.path.isfile(fullpath) and f.endswith('.txt'):
+            with open(fullpath) as fi:
+                parole = fi.read().split()
+                d = {k : 0 for k in words}
+                for k in d:
+                    if k in parole:
+                        d[k] += 1
+            lista = [(k, v) for k, v in d.items()]
+    return sorted(lista, key = lambda x : (-x[1], x[0]))
+                            
+                
+print(ex2('ex2', ["cat", "dog"]))      
 
 ######################################################################################
 

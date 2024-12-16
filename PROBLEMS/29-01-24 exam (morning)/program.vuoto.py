@@ -52,10 +52,12 @@ Esempio:
 '''
 def func1(int_list, n):
     ## Scrivi qui il tuo codice
-    pass
+    d = {v : int_list.count(v) for v in int_list if int_list.count(v) >= n}
+    
+    return d
 
-# l1 = [4, 4, 10, 4, 2, 1, 2]
-# print(func1(l1, 2))
+l1 = [4, 4, 10, 4, 2, 1, 2]
+passrint(func1(l1, 2))
 
 
 # %% ----------------------------------- FUNC2 ------------------------- #

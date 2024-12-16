@@ -132,16 +132,16 @@ def check1(a, b, params=None, expl='', other=None):
 
 
 def check_text_file(a,b):
-    with open(a, 'rU', encoding='utf8') as f: txt_a = f.read()
-    with open(b, 'rU', encoding='utf8') as f: txt_b = f.read()
+    with open(a, 'r', encoding='utf8') as f: txt_a = f.read()
+    with open(b, 'r', encoding='utf8') as f: txt_b = f.read()
     lines_a = [l.strip() for l in txt_a.splitlines()]
     lines_b = [l.strip() for l in txt_b.splitlines()]
     assert lines_a == lines_b, 'text differ: ' + a + ' ' + b
 
 
 def check_json_file(a,b, params=None, expl='', other=''):
-    with open(a, 'rU', encoding='utf8') as f: da = json.load(f)
-    with open(b,' rU', encoding='utf8') as f: db = json.load(f)
+    with open(a, 'r', encoding='utf8') as f: da = json.load(f)
+    with open(b,' r', encoding='utf8') as f: db = json.load(f)
     check(da, db, params, expl, other)
 
 
