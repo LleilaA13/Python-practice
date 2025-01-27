@@ -22,9 +22,9 @@ di debug e conoscere dove un esercizio genera errore.
 Ricordare che per testare e valutare la ricorsione è necessario
 impostare DEBUG = False
 """
-nome       = "NOME"
-cognome    = "COGNOME"
-matricola  = "MATRICOLA"
+nome       = "Leila"
+cognome    = "Zanoni"
+matricola  = "2033176"
 
 
 #########################################
@@ -50,11 +50,20 @@ il risultato sarà  {1: {'e', 'E', 'a'}, 2: {'Bc', 'bC', 'cR', 'cr'}}
 
 def func1(list1, list2):
     ## Scrivi qui il tuo codice
-    pass
+    m1 = [m.lower() for m in list1]
+    m2 = [m.lower() for m in list2]
+    
+    comuni =  set(m1) & set(m2)
+    res = {}
+    
+    for w in comuni:
+        res[len(w)] = res.get(len(w), set()) | {list1[m1.index(w)] , list2[m2.index(w)]}
+        
+    return res
 
 
-#list1 = [ 'a', 'Bc', 'a', 'b', 'cR', 'e', 'a', 'qrt', 'st' ]
-#list2 = [ 'a', 'cd', 'f', 'bC', 'cr', 'E', 'bn', 'c' ]
+list1 = [ 'a', 'Bc', 'a', 'b', 'cR', 'e', 'a', 'qrt', 'st' ]
+list2 = [ 'a', 'cd', 'f', 'bC', 'cr', 'E', 'bn', 'c' ]
 #print(func1(list1,list2))
 
 # %% ----------------------------------- FUNC2 ------------------------- #
@@ -78,7 +87,18 @@ Si assuma che dicts non sia mai vuoto.
 
 def func2(dicts):
     ## Scrivi qui il tuo codice
-    pass
+    d = {}
+    for di in dicts:
+        for k, v in di.items():
+            d[k] = d.get(k, '') + v
+    
+
+    res = {k: "".join(sorted(v)) for k, v in d.items()}
+    
+    return res
+    
+#print(func2([{1:'iac', 2:'andrea',3:'mau', 5:'angelo'},
+#{2:'sterbini', 3:'mancini',1:'masi', 5:'spognardi'}]))
 
 
 # %% ----------------------------------- FUNC3 ------------------------- #
@@ -98,7 +118,18 @@ Nell'esempio sopra la profondità massima è 6, infatti lists[1] ha
 
 def func3(lists):
     ## Scrivi qui il tuo codice
-    pass
+    mass = 0
+    for l in lists:
+        depth = 1
+        while len(l) != 0:
+            depth += 1
+            l = l[0]
+        mass = max(mass, depth)
+        
+    return mass
+
+print(func3([[[]], [[[[[[]]]]]], [[]]]))
+            
 
 
 # %% ----------------------------------- FUNC4 ------------------------- #
@@ -134,9 +165,16 @@ nel file func4/func4_out1.txt le righe
 
 
 def func4(input_filename, output_filename):
-    ## Scrivi qui il tuo codice
-    pass
-
+    with open(input_filename, 'r', encoding='utf-8') as f:
+        lines = f.read().split("\n")
+    
+    lines = sorted([(c, x) for c, x in enumerate([sum([ord(y) for y in x if y.isalnum()]) for x in lines])], key = lambda x: x[1])
+    res = [x[1] for x in lines]
+    with open(output_filename, 'w', encoding='utf-8') as f:
+        for el in lines:
+            f.write(f"{el[0]}\n")
+    return res
+print(func4('func4/func4_test1.txt', 'func4/func4_out.txt'))
 
 # %% ----------------------------------- FUNC5 ------------------------- #
 """ func5: 6 punti
@@ -175,7 +213,24 @@ import images
 
 def func5(H, W, sx, sy, outpath):
     ## Scrivi qui il tuo codice
-    pass
+    b = 0, 0, 0
+    w = 255, 255, 255
+    img = [[b]*W for _ in range(H)]
+    
+    count = 0
+    
+    for y in range(0, H, sy + 1):
+        for x in range(W):
+            img[y][x] = w
+            count += 1
+    for x in range(0, W, sx + 1):
+        for y in range(H):
+            if img[y][x] == b:
+                img[y][x] = w
+                count += 1
+                
+    images.save(img, outpath)
+    return count
 
 # %% ----------------------------------- EX.1 ------------------------- #
 """
@@ -202,11 +257,26 @@ Esempio:
    expected = [{25}, {8, 2}, {9, 3, 1}]
    livello      0       1        2
 """
-
+import tree
 def ex1(root):
-    ## Scrivi qui il tuo codice
-    pass
+    return foo(root, 0, [])
 
+def foo(root, level, res):
+    if root is not None:
+        if len(res) <= level:
+            res.append(set())
+        res[level].add(root.value)
+        foo(root.right, level+1, res)
+        foo(root.left, level + 1, res)
+    
+    return res
+    
+root = tree.BinaryTree.fromList([25, [8, None, [3, None, None]], [2, [9, None, None],[1, None, None]]])
+print(ex1(root))
+        
+    
+        
+            
 
 # %% ----------------------------------- EX.2 ------------------------- #
 """
@@ -232,7 +302,25 @@ Se alfabet='icA' si deve generare il set:
 
 def ex2(alphabet):
     ## Scrivi qui il tuo codice
-    pass
+    minuscole = [c for c in alphabet if c.islower()]
+    maiuscole = [c for c in alphabet if c.isupper()]
+    
+    Sm =_ex2(minuscole, maiuscole)
+    SM = _ex2(maiuscole, minuscole)
+    return Sm | SM
+
+    
+def _ex2(gruppo1, gruppo2, livello = 0):
+    res = set(gruppo1) | set(gruppo2)
+    for i,c in enumerate(gruppo1):
+        rest = gruppo1[:i] + gruppo1[i+1:]
+        
+        subsols = _ex2(gruppo2, rest, livello + 1)
+        
+        res |= subsols
+        
+        res |= {c + s for s in subsols if c.islower() != s[0].islower()}
+    return res
 
 
     

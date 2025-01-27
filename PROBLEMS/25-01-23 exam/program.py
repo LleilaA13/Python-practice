@@ -5,30 +5,30 @@
 ################################################################################
 ################################################################################
 
-""" Operations to do FIRST OF ALL:
- 1) Save this file as program.py
- 2) Assign the variables below with your
-    NAME, SURNAME and MATRICULATION NUMBER
- 3) Change the directory name examPY in your matriculation number
+""" Operazioni da fare PRIMA DI TUTTO:
+ 1) Salvare il file come program.py
+ 2) Assegnare le variabili sottostanti con il tuo
+    NOME, COGNOME, NUMERO DI MATRICOLA
+ 3) Cambiare la directory examPY con il tuo numero di matricola
 
-To pass the exam you have to:
-    - solve at least 3 func problems and
-    - solve at least 1 ex (recursive) problem and
-    - get a score greater or equal to 18
+Per superare l'esame e' necessario:
+    - risolvere almeno 3 esercizi di tipo func AND;
+    - risolvere almeno 1 esercizio di tipo ex (problema ricorsivo) AND;
+    - ottenere un punteggio maggiore o uguale a 18
 
-The final score is the sum of the solved problems.
+Il voto finale e' la somma dei punteggi dei problemi risolti.
 
-## OVERALL POINTS
-# | type            | score     |
+## RICAPITOLAZIONE PUNTEGGIO:
+# | esercizio       | punteggio |
 # | func1           |         2 |
 # | func2           |         2 |
 # | func3           |         2 |
 # | func4           |         6 |
 # | func5           |         6 |
-# | ex1 (recursive) |         6 |
-# | ex2 (recursive) |         8 |
+# | ex1 (ricorsivo) |         6 |
+# | ex2 (ricorsivo) |         8 |
 # | --------------- |        -- |
-# | total           |        32 |
+# | Totale          |        32 |
 """
 
 name       = "Leila"
@@ -37,323 +37,277 @@ student_id = "2033176"
 
 
 ################################################################################
-# ---------------------------- DEBUG SUGGESTIONS ----------------------------- #
-# To run only some of the tests, you can comment the entries with which the
-# 'tests' list is assigned at the end of grade.py
+# ---------------------------- SUGGERIMENTI PER IL DEBUG --------------------- #
+# Per eseguire solo alcuni dei test, si possono commentare le voci con cui la
+# lista 'test' è assegnata alla FINE di grade.py
 #
-# To debug recursive functions you can turn off the recursive test setting
-# DEBUG=True in the file grade.py
+# Per debuggare le funzioni ricorsive potete disattivare il test di ricorsione
+# settando DEBUG=True nel file grade.py
 #
-# DEBUG=True turns on also the STACK TRACE that allows you to know which
-# line number in program.py generated the error.
+# DEBUG=True vi attiva anche lo STACK TRACE degli errori per sapere il numero
+# di linea di program.py che genera l'errore.
 ################################################################################
 
 
 # %% ----------------------------------- FUNC1 ------------------------- #
-''' func1: 2 points
-Implement the function func1(string_list, word) that takes as input a
-list of strings 'string_list' and a string 'word' and destructively deletes
-from string_list all the strings that contain 'word'.
-Remember: the input string_list has to be modified!
-
-The function returns the number of strings removed.
+''' func1: 2 punti
+Si definisca la funzione func1(string_list, word) che prende in ingresso una
+lista di stringhe 'string_list' e una parola 'word' e cancella in maniera distruttiva
+da string_list tutte le stringhe che contengono 'word'.
+La funzione restituisce il numero di stringhe rimosse.
 '''
-
 def func1(string_list, word):
-    # write here you code
-    new_lista = [stringa for stringa in string_list if word not in stringa]
-    differenza = len(string_list) - len(new_lista)
-    string_list[:] = new_lista
-    return differenza
+    # scrivi qui il tuo codice
+    pass
 
-#print(func1(string_list = 'Francesco è eliminato da MasterChef 12. L’attacco ai giudici: Ricordatevi che siamo persone'.split(),
-#word = 'e'))
 
 # %% ----------------------------------- FUNC2 ------------------------- #
-''' func2: 2 points
-Implement a function func2(pathname) that takes as input
-a string representing the path to a text file. The file
-contains on each line a "number,student_id" pair separated by
-a comma. The numbers are always greater than or equal to zero.  The
-function must return a dictionary. The dictionary has the
-'student_id' as key in the form of a string and the
-'number' as the value but as an integer type.  In addition, a student_id can be
-associated with more than one number: in case this happens, the dictionary
-needs to only keep the maximum number.
-Example:
-Content of func2_test_1.txt
+''' func2: 2 punti
+Si definisca una funzione func2(pathname) che prende in ingresso
+una stringa che rappresenta il percorso ad un file testuale. Il file
+contiene su ciascuna riga una coppia "numero,matricola" separata da
+una virgola. I numeri sono sempre maggiori o uguali a zero.  La
+funzione deve restituire il dizionario che si crea inserendo la
+'matricola' come chiave sottoforma di stringa e come valore il
+'numero' come tipo _intero_.  Una matricola puo' essere
+associata a piu' numeri: nel caso in cui questo accade nel dizionario
+va mantenuto il numero massimo.
+Esempio:
+Contenuto di func2_test_1.txt
  27,123456
  78,121212
  90,111111
  79,121212
  26,123456
  91,111111
-The function func2('func2_test_1') returns {'123456': 27, '121212': 79, '111111': 91}
+La funzione func2('func2_test_1') ritorna {'123456': 27, '121212': 79, '111111': 91}
 '''
 
 def func2(pathname):
-    # write here you code
-    diz = {}
-    with open(pathname, encoding = 'utf8') as f:
-        for line in f:
-            number, student_id = line.strip().split(',')
-            number = int(number)
-            if student_id in diz:
-                diz[student_id] = max(diz[student_id], number)
-            else:
-                diz[student_id] = number
-    return diz
+    # scrivi qui il tuo codice
+    pass
 
-#print(func2('func2_test_1.txt'))
+
 # %% ----------------------------------- FUNC3 ------------------------- #
-'''  func3: 2 points
-Implement the function func3(listA, pathname) that takes as its
-input a list of strings 'listA' and a string pointing to a
-file at the path 'pathname'. The function must write to the path
-'pathname' a text file in which every line has a string from listA.
-The strings are written in increasing order by the number of characters.
-In case of a tie, strings are sorted in reverse alphabetical order.
-The function returns the total number of characters of all the strings
-in listA.
+'''  func3: 2 punti
+Si definisca una funzione func3(listaA, pathname) che prende in
+ingresso una lista di stringhe 'listaA' e una stringa che punta ad una
+file al percorso 'pathname'. La funzione deve scrivere al percorso
+'pathname' un file di testo dove su ogni riga e' scritta ciascuna
+stringa della listaA. Prima di scrivere le stringhe, e' necessario
+ordinare in maniera crescente la listaA in base al numero di caratteri
+di ciascuna stringa; in caso di parita' in ordine alfabetico inverso.
+La funzione ritorna il numero di caratteri totali di tutte le stringhe
+in listaA.
 
-The expected outputs are available in func3_1_exp.txt, func3_2_exp.txt, func3_3_exp.txt
+I file attesi sono visibili in func3_1_exp.txt, func3_2_exp.txt, func3_3_exp.txt
 '''
 
 
-
-
 def func3(listaA, pathname):
-    # write here you code
-    somma = sum([len(s) for s in listaA])
-    lista = sorted(listaA, key = lambda x : (-len(x), x), reverse = True)
-    with open(pathname, mode = 'w', encoding='utf8') as f:
-        for s in lista:
-            f.write(s)
-            f.write('\n')
-   
-    return somma
+    # scrivi qui il tuo codice
+    pass
 
-print(func3(['ananas', 'banana', 'pluto', 'zoroastro', 'marx', 'socrate', 'PLATO'], 'func3_1_!!TMP!!.txt'))
+
 # %% ----------------------------------- FUNC4 ------------------------- #
-""" func4: 6 points
-Implement the function func4(S) which takes as input a string 'S'.
-Given 'S', it is necessary to remove all non-alphabetic
-characters, extract all the words in the string while converting them
-to lower case.
+""" func4: 6 punti
+Si scriva una funzione func4(S) che prende in ingresso una stringa 'S'
+che indica del testo da cui e' necessario trasformare in spazi tutti i caratteri
+non alfabetici, quindi individuare la lista di tutte le parole presenti nella
+stringa, convertite in lower case.
 
-Example. From:
-
+Esempio. Da:
 S = 'Pippo e topolino sono andati al mare. Hanno mangiato una bella pasta
 al pesce pescato in mare il giorno prima, ma purtroppo Topolino si era
 scordato di chiamare Paperino'
 
-we go to:
-
+si passa a :
 ['pippo', 'e', 'topolino', 'sono', 'andati', 'al', 'mare', 'hanno',
 'mangiato', 'una', 'bella', 'pasta', 'al', 'pesce', 'pescato', 'in',
 'mare', 'il', 'giorno', 'prima', 'ma', 'purtroppo', 'topolino', 'si',
 'era', 'scordato', 'di', 'chiamare', 'paperino']
 
-Then, the function calculates the frequency of the words found and has
-to produce the related histogram.
+Poi la funzione calcola l'istogramma delle parole renderizzato in una stringa.
 
-The histogram is a string representing the frequency of each word,
-constructed according to the following rules:
-- the words appear in alphabetical order
-- every word appears followed by one or more spaces, many asterisks
-  ('*') as its frequency, and one newline character ('\n')
-- the number of spaces added is so that all the asterisks are
-  left-aligned in all the lines.
+L'istogramma sotto forma di stringa e' costruito secondo le seguenti regole:
+- le parole appaiono in ordine alfabetico
+- ogni parola appare seguita da uno o più spazi, un numero di asterischi ('*')
+  pari alle ripetizioni di quella parola e infine un carattere di accapo ('\n')
+- il numero di spazi dopo ogni parola è tale che gli asterischi sono
+  tutti allineati a sinistra.
 
-The inital part of the string hence will be:
+Quindi la parte iniziale della stringa istogramma sarà:
 'al        **\nandati    *\nbella     *\n .....'
-so that the printed string will be
+
+che visualizzata porta a:
+
 al        **
 andati    *
 bella     *
+chiamare  *
+di        *
+e         *
+era       *
+giorno    *
+hanno     *
+il        *
+in        *
+ma        *
+mangiato  *
+mare      **
+paperino  *
+pasta     *
+pescato   *
+pesce     *
+pippo     *
+prima     *
+purtroppo *
+scordato  *
+si        *
+sono      *
+topolino  **
+una       *
 
+NOTA: la parola piu lunga e' 'purtroppo' e dista
+un solo spazio dal primo asterisco.
 
-For more examples please see functions test_func4_1, test_func4_2, test_func4_3
-in grade.py
+Si vedano test_func4_1, test_func4_2, test_func4_3
+in grade.py per piu esempi
 """
 
 
 def func4(S):
-    S = S.lower()
-    words = ''.join(s if s.isalpha() else ' ' for s in S).split()
-    words.sort()
-    
-    diz = {word: words.count(word) for word in set(words)}
-    
-    length = len(max(diz.keys(), key = len)) + 1
-    
-    new = []
-    
-    for word in sorted(diz.keys()):
-        new.append(word + ' '*(length - len(word)) + '*'*diz[word])
-    return '\n'.join(new) + '\n'
-    
-    
-    
-            
-    
+    # scrivi qui il tuo codice
+    pass
 
-print(func4('Pippo e topolino sono andati al mare. Hanno mangiato una bella pasta al pesce pescato in mare il giorno prima, ma purtroppo Topolino si era scordato di chiamare Paperino'))
+
 # %% ----------------------------------- FUNC5 ------------------------- #
-""" func5: 6 points
-Implement a function func5(img, output_file_name) that takes as input
-'img', an image modeled as a list of lists and effects a RIGHT rotation
-of the image by 90 degrees. The new rotated image must be saved in
-'output_file_name' via the images module.
-The function returns a tuple where the first element is the height and
-the second is the width of the rotated image.
+""" func5: 6 punti
+Si definisca una funzione func5(img, output_file_name) che prende in ingresso
+un'immagine modellata come lista di liste e effetti una rotazione A DESTRA
+dell'immagine di 90 gradi. La nuova immagine ruotata deve essere salvata in
+output_file_name tramite il modulo images.
+La funzione ritorna una tupla nel formato altezza e poi larghezza
+dell'immagine ruotata.
 """
 
 import images
 
 
 def func5(img, output_file_name):
-    h = len(img[0])
-    w = len(img)
-    newimg = []
-    for i in range(h):
-        row = []
-        for j in range(w-1, -1, -1):
-            row.append(img[j][i])
-        newimg.append(row)
-    images.save(newimg, output_file_name)
-    return h,w
-
-'''
-def func5(img, output_file_name):
-    # write here you code
-    h = len(img[0]) #col == length of first row
-    w = len(img) #row
-    new = []
-    for i in range(h):
-        new.append([img[j][i] for j in range(w-1, -1, -1)])
+    # scrivi qui il tuo codice
+    #img = images.load(img)
+    H, W = len(img), len(img[0])
+    new = [[img[x][y] for x in reversed(range(H))]  for y in range(W)]
+    
     images.save(new, output_file_name)
-    return h,w
-'''
+    
+    return W, H
+
+
+
+#print(func5('func5/image01.png', 'func5/your_image01.png'))
+    
+    
+
+
 # %% ----------------------------------- EX.1 ------------------------- #
 """
-Ex1: 6 points
-Implement a recursive function ex1(root), or another function that uses
-recursion, that takes a string pointing to a directory as input and
-recursively explores the directory tree and returns a
-dictionary.
-The key in the dictionary is the absolute path starting
-from the 'root' dir in the form of a string.  The value corresponds to a
-string built as follows: considering a directory, we take
-ALL the files in THAT directory ONLY with the extension ".txt" sorted
-alphabetically.
-The files .txt are text files where on each line there is a series of
-integer numbers followed by a space.
-An example is the file 'ex1_A/XYCwdkCokL.txt' which contains:
+Ex1: 6 punti
+Si scriva una funzione ricorsiva ex1(root), o che al suo interno usi
+una funzione ricorsiva, che prende in ingresso una stringa che punta ad una
+directory e ricorsivamente esplori l'albero delle directory e restituisca un
+dizionario. La chiave del dizionario e' il percorso assoluto a partire
+dalla 'root', sottoforma di stringa.  Il valore corrisponde ad una
+stringa così fatta: considerando una directory trovata, si prendano
+soltanto i file in QUELLA directory con estensione ".txt", ordinati
+in maniera alfabetica.  I file .txt sono file testuali dove su ogni
+riga vi e' una serie di numeri interi seguiti solo da uno spazio. A
+esempio 'ex1_A/XYCwdkCokL.txt' contiene:
 
 75 84 84 73 83
 76 74 76
 
-From top to bottom, left to right, read each number sequentially by
-interpreting it as a Unicode value and thus converting it to a character.
-The concatenation of all characters forms a string.
+Si legga sequenzialmente all'alto al basso, da sinistra a destra,
+ciascun numero, lo si interpreti come valore Unicode, convertendolo
+in un carattere e lo si concateni con il carattere successivo.
 
-For example, the above sequence is converted to the string "KTTISLJL".
+Ad esempio la sequenza suddetta e' convertita nella stringa "KTTISLJL".
 
-The value in the dictionary is the string obtained by concatenating the
-strings generated for each text file for that directory according to the
-alphabetical order of the files.txt.
+Il valore nel dizionario e' la stringa che si ottiene
+concatenando le stringhe generate per ogni file testuale per quella
+directory, secondo l'ordine alfabetico dei file.txt.
 
-If the directory does not contain any .txt files then that directory
-does not appear in the dictionary.
+Se la directory non contiene nessun file .txt allora quella directory
+non appare nel dizionario.
 
-If the function is called on 'ex1_A', it will return the following dictionary:
+Se la funzione e' chiamata su 'ex1_A', ritorna:
 
 {'ex1_A/bkLbD': 'A\x9eŻĂĳŜǖ', 'ex1_A': 'KTTISLJL'}
 
-NOTE: It is forbidden to use the os.walk function. You can use:
+NOTA: e' proibito usare la funzione os.walk. Si possono usare:
 os.listdir, os.path.isfile, os.path.exists, etc.
-NOTE: we strongly suggest dividing the exercise into subproblems
-organizing the code into small functions for each subproblem.
+Per concatenare i path, si usi l'operazione di concatenazione con il carattere '/'
+
+NOTA: consigliamo fortemente di dividere l'esercizio in sottoproblemi
+dividendo in funzioni per ogni sottoproblema.
 """
 
 import os
-def process(file):
-    with open(file) as f:
-        values = f.read().split()
-    return "".join([chr(int(c)) for c in values])
+
 
 def ex1(root):
-    d = {}
-    s = ''
-    for f in sorted(os.listdir(root)):
-        fname = root + '/' + f
-        if os.path.isfile(fname) and f.endswith('.txt'):
-            s += process(fname)
-        elif os.path.isdir(fname):
-            d.update(ex1(fname))
-    if s:
-        d[root] = s
-    return d
+    # scrivi qui il tuo codice
+    pass
+
 
 # %% ----------------------------------- EX.2 ------------------------- #
 """
 Ex2: 8 punti
-Implement the recursive function ex2(nums, ops), or another function that uses
-recursion, which takes as input a set of positive integers 'nums' and a list
-of strings 'ops' indicating operations on the numbers.
-The function must recursively generate all possible arithmetic expressions,
-where each expression is a string. The expressions are derived by joining
-two or more numbers taken from 'nums' with operations from the set 'ops'.
-The function must return all the constructed expressions.
+Si scriva una funzione ricorsiva ex2(nums, ops), oppure una che usi
+altre funzioni ricorsive, che prende in ingresso un set di numeri
+interi positivi 'nums' e una lista di stringhe 'ops' che indicano
+delle operazioni sui numeri. La funzione deve generare ricorsivamente
+tutte le possibili espressioni aritmetiche, dove ciascuna espressione
+e' una stringa. Le espressioni derivano dalla unione di due
+o più numeri presi da 'nums' mediante operazioni del set 'ops', usando
+le regole seguenti:
 
-The following rules apply when constructing the expression:
+1. una volta che un numero e' usato nell'espressione, non puo' piu' essere usato
+   Esempio:
+     se nums={5,8,0} e ops=['+','*']
+     '8+5+0' e' un'espressione valida ma '8+5+8' non lo e'.
 
-1. Once a number is used in the expression, it can no longer be used
-   For example, if nums={5,8,0} and ops=['+','*']
-   '8+5+0' is a valid expression, while '8+5+8' is NOT valid.
+2. le operazioni possono essere riutilizzate a piacimento quante volte si vuole.
+   Nell'esempio precedente '8+5+0', infatti, il '+' e' stato usato 2 volte.
 
-2. Operations can be reused at will as many times as desired.
-   For example, in the above example '8+5+0', the + was used twice.
+La funzione torna un set con tutte le espressioni generate.
 
-The function returns a set with all the generated expressions.
-
-Example: if nums={5,8,0} and ops=['+','*'], the function will generate:
+Esempio: nums={5,8,0} e ops=['+','*'] la funzione deve generare il set:
 {'8*5*0', '5+0+8', '5+0*8', '0+5+8', '0+8+5', '8+5*0', '0+5*8',
 '0*8*5', '0*8+5', '8+5+0', '5*0*8', '8+0*5', '5*8+0', '5*0+8',
 '5+8+0', '8*0+5', '0*5*8', '0+8*5', '8*5+0', '8*0*5', '5*8*0',
 '5+8*0', '0*5+8', '8+0+5'}
 
-NOTE: do NOT define the recursive function to be inner functon of ex2 otherwise
-you fail the recursive test.
-NOTE: we strongly suggest dividing the exercise into subproblems
-organizing the code into small functions for each subproblem.
+NOTA: NON  definite la funzione ricorsiva interamente a ex2() altrimenti
+non passate il test ricorsivo.
+NOTA: consigliamo fortemente di dividere l'esercizio in sottoproblemi
+dividendo in funzioni per ogni sottoproblema.
 """
 
-def gen_expressions(nums, ops):
-    #empty case:
-    if not nums:
-        return ['']
-    #one case:
-    if len(nums) == 1:
-        return list(map(str, nums)) #so from the inner: 1- map string into nums, so convert nums to string, then map is a gen so make it list
-    #rec case:
-    return [ ''.join([str(num), o, gs]) for num in nums for o in ops for gs in gen_expressions(nums-{num}, ops)]
 
-    
-    
 def ex2(nums, ops):
-    # write here you code
-    return set(gen_expressions(nums, ops))
+    # scrivi qui il tuo codice
+    pass
 
-print(ex2({5,8,0},['+','*']))
+
 
 ###################################################################################
 if __name__ == '__main__':
     # Place your tests here
     print('*'*50)
     print('ITA\nDevi eseguire il grade.py se vuoi debuggare con il grader incorporato.')
-    print('Altrimenti puoi inserire qui del codice per testare le tue funzioni ma devi scriverti i casi che vuoi testare')
+    print('Altrimenii puoi inserire qui del codice per testare le tue funzioni ma devi scriverti i casi che vuoi testare')
     print('*'*50)
     print('ENG\nYou have to run grade.py if you want to debug with the automatic grader.')
     print('Otherwise you can insert here you code to test the functions but you have to write your own tests')

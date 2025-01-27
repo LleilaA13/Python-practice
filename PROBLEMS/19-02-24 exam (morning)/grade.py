@@ -23,8 +23,8 @@ import program
 ####
 #### Mettete DEBUG=True per disattivare i test di ricorsione  e
 #### fare debug delle funzioni più facilmente attivando stack trace
-DEBUG = True
-#DEBUG = False
+#DEBUG = True
+DEBUG = False
 #############################################################################
 
 ################################################################################

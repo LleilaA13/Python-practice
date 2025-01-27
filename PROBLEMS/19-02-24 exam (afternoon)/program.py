@@ -19,9 +19,9 @@ To pass the exam it is necessary to:
 The final score is the sum of the scores of the solved problems.
 """
 
-name       = 'NAME'
-surname    = 'SURNAME'
-student_id = 'STUDENT_ID'    # your Sapienza registration number
+name       = 'Leila'
+surname    = 'Zanoni'
+student_id = '2033176'    # your Sapienza registration number
 
 ################################################################################
 ################################################################################
@@ -56,10 +56,12 @@ Assume that lists is never empty.
 
 def func1(lists):
     # write your code here
-    pass
+    res = set([c for sublista in lists for c in sublista if all(c in l for l in lists)])
+    return sorted(res, reverse = True)
+    
 
 
-
+#print(func1([[4, 4, 10, 4, 1], [4, 2, 1], [1, 4]]))
 #%% ---------------------------- FUNC 2 ---------------------------- #
 
 '''
@@ -75,10 +77,16 @@ expected = 3212
 '''
 
 def func2(text):
-    pass
+    for c in text:
+        if not c.isdigit():
+            text = text.replace(c, ' ' )
+            
+    return max(int(c) for c in text.split())
+    
+    
 
-# text = 'under the bench 1234The go3212At SinGs 4S5oV6e7r8t HE BeNcH tHe gOaT dIES'
-# print(func2(text))
+text = 'under the bench 1234The go3212At SinGs 4S5oV6e7r8t HE BeNcH tHe gOaT dIES'
+#print(func2(text))
 
 # ---------------------------- FUNC 3 ---------------------------- #
 '''
@@ -112,9 +120,28 @@ and the function must return the pair (sum_even, sum_odd) = (236, 93)
 '''
 
 def func3(textfile_in, textfile_out):
-    pass
+    res = []
+    sum_odd, sum_even = 0, 0
+    with open(textfile_in) as f:
+        for line in f:
+            prod_odd = 1
+            prod_even = 1
+            line = line.split(', ')
+            for char in line:
+                if int(char) % 2 == 0:
+                    prod_even *= int(char)
+                    sum_even += int(char)
+                else:
+                    prod_odd *= int(char)
+                    sum_odd += int(char)
+            res.append(prod_even - prod_odd)
+    with open(textfile_out, 'w') as fo:
+        for num in reversed(res):
+            print(num, file = fo)
+    return sum_even, sum_odd
+                    
 
-# print(func3('func3/in_1.txt', 'func3/out_1.txt'))
+#print(func3('func3/in_1.txt', 'func3/out_1.txt'))
 
 #%% ---------------------------- FUNC 4 ---------------------------- #
 
@@ -139,9 +166,25 @@ The elements that are not on the diagonals are 23, 12, -30 and 40.
 So the function must return (17*51*17*98*51*0) - (23+12-30+40) = -45
 '''
 def func4(filein):
-    pass
+    m = []
+    with open(filein) as f:
+        for line in f:
+            line = line.split()
+            m.append(line)
+    prod = 1
+    somma = 0
+    n = len(m)
+    for x in range(len(m)):
+        for y in range(len(m)):
+            if x==y or x + y == (n - 1):
+                prod *= int(m[x][y])
+            elif x != y and x + y != (n - 1):
+                somma += int(m[x][y])
+            
+            
+    return prod - somma
 
-#print(func4('func4/in_1.txt'))
+#print(func4('func4/in_2.txt'))
 
 #%% ---------------------------- FUNC 5 ---------------------------- #
 
@@ -179,9 +222,25 @@ import images
 
 
 def func5(png_input):
-    pass
+    #PARTI DAL CENTRO!!!!!!!!
+    img = images.load(png_input)
+    res = {}
+    H = len(img)
+    W = len(img[0])
+    for y, riga in enumerate(img):
+        for x, px in enumerate(riga):
+            if px != (0,0,0):
+                if 0<y< H-1 and 0<x<W-1:
+                    if px == img[y-1][x-1] == img[y-1][x+1] == img[y+1][x-1] == img[y+1][x+1]:
+                        if px not in res:
+                            res[px] = 1
+                        else:
+                            res[px] += 1
+    return res
+                    
+                
 
-# print(func5('func5/in_2.png'))
+#print(func5('func5/in_2.png'))
 
 
 # ---------------------------- EX 1 ---------------------------- #
@@ -239,9 +298,43 @@ from nary_tree import NaryTree
 
 
 def ex1(root): # root type is NaryTree 
-    pass
+    max_path = massimo(root)
+    min_path = minimo(root)
+    i = 0
+    while min_path[i] == max_path[i]:
+        i += 1
+    
+    return min_path, max_path, min_path[-1: i-1: -1] + max_path[i-1:]
 
-'''
+def minimo(root):
+    if root.sons is None:
+        return []
+    m = root.value
+    minipath = [root.value]
+    for son in root.sons:
+        path = minimo(son)
+        if m > min(path):
+            m = min(path)
+            minipath = [root.value] + path
+    return minipath
+
+
+def massimo(root):
+    if root.sons is None:
+        return []
+    M = root.value
+    maxpath = [root.value]
+    for son in root.sons:
+        path = massimo(son)
+        if M  <  max(path):
+            M = max(path)
+            maxpath = [root.value] + path
+    return maxpath
+
+
+
+
+
 root = NaryTree.fromList(
     [ -7,
         [1,  [-10, [6],
@@ -252,8 +345,8 @@ root = NaryTree.fromList(
              [-5   ]],
         ])
 
-# print(ex1(root))
-'''
+print(ex1(root))
+
 
 # %% ----------------------------------- EX.2 ----------------------------------- #
 '''
@@ -286,10 +379,34 @@ the function returns:
 import os
 
 def ex2(dirin, extensions):
-    pass
+    d = {}
+    size = []
+    for f in os.listdir(dirin):
+        full = dirin + '/' + f
+        if os.path.isdir(full):
+            d.update(ex2(full, extensions))
+        if os.path.isfile(full) and any(full.endswith(e) for e in extensions):
+            size.append(os.path.getsize(full))
+    if len(size) > 0:
+        d[dirin] = [min(size), max(size)]
+    return d
+            
 
-
-#print(ex2('ex2/A', ["txt", "pdf", "png", "gif"]))
+'''
+def ex2(dirin, extensions):
+    d = {}
+    sizes = []
+    for f in os.listdir(dirin):
+        fn = dirin+'/'+f
+        if os.path.isfile(fn) and any(fn.endswith(e) for e in extensions):
+            sizes.append(os.path.getsize(fn))
+        elif os.path.isdir(fn):
+            d.update(ex2(fn, extensions))
+    if len(sizes)>0:
+        d[dirin] = [min(sizes), max(sizes)]
+    return d
+'''
+print(ex2('ex2/A', ["txt", "pdf", "png", "gif"]))
 #print(ex2('ex2', ["png", "gif"]))
 #print(ex2('ex2/C', ["pdf", "png"]))
 

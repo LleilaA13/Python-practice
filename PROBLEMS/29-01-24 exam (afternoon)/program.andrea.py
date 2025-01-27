@@ -303,7 +303,8 @@ def ex2(T):
     else:
         D += 1
     return L,S,D
-
+root = tree.BinaryTree.fromList([25, [8, None, [3, None, None]], [2, [9, None, None],[1, None, None]]])
+print(ex2(root))
 ###################################################################################
 if __name__ == '__main__':
     # Place your tests here

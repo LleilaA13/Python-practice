@@ -77,7 +77,9 @@ the lists in the dictionary.
 
 def func2(a_dictionary):
     # your code goes here
-    pass
+    return min(a_dictionary, key = lambda x : (-sum(a_dictionary[x]), x))
+
+#print(func2({"C" : [0], "B" : [1], "A" : [1, -1, 1, -1, 1, -1, 1, -1, 1], "a" : [-1]}))
 
 # %%  ---- FUNC3 ----
 '''  func3: 2 marks
@@ -103,7 +105,20 @@ list_B = ["bcE", "dca", "eDf"], the function returns:
 
 def func3(list_A, list_B):
     # your code goes here
-    pass
+    l = []
+    for i, j in zip(list_A, list_B):
+        res = ""
+        for char in i:
+            if char.lower() in j.lower():
+                res += char.lower()
+        l.append("".join(sorted(res)))
+                
+                
+    return l
+
+#print(func3(["aBd", "baC", "cAb"], ["bcE", "dca", "eDf"]))
+        
+                
 
 # %%  ---- FUNC4 ----
 ''' func4: 6 marks
@@ -138,8 +153,15 @@ quick
 
 def func4(input_txt, output_txt):
     # your code goes here
-    pass
-
+    with open(input_txt) as f:
+        parole = f.read().split()
+        parole[:] = [par for par in parole if len(par) > 3]
+    with open(output_txt, 'w') as f:
+        for par in reversed(parole):
+            print(par, file = f)
+    return len(parole)
+        
+#print(func4('func4/in_example2.txt', 'func4/out_example2.txt'))
 
 # %%  ---- FUNC5 ---- %% #
 ''' func5: 8 marks
@@ -173,9 +195,37 @@ import images
 
 def func5(imagefile, output_imagefile):
     # your code goes here
-    pass
+    white = (255, 255, 255)
+    img = images.load(imagefile)
 
-# for i in range(1, 5):
+    lengths = {y:riga.count(white) for y, riga in enumerate(img) if riga.count(white)}
+    m = min(lengths.values())
+    M = max(lengths.values())
+    
+    div = sum(lengths.values()) // len(lengths)
+    
+    color = m, div, M
+    count = 0
+    
+    for y, v in lengths.items():
+        if v in [m, M]:
+            count += 1
+            for x ,pixel in enumerate(img[y]):
+                if pixel == white:
+                    img[y][x] = color
+        
+    images.save(img, output_imagefile)
+                
+    
+    return count
+
+
+print(func5('func5/func5_test1.png', 'func5/func5_out1.png'))
+    
+                
+                
+
+#for i in range(1, 5):
 #     print('func', func5(f'func5/func5_test{i}.png', f'func5/func5_out{i}.png'))
     
 # %% ----------------------------------- EX.1 ----------------------------------- #
@@ -227,12 +277,35 @@ the function returns the list:
 
 '''
 
+import os
+
 from  os import listdir
 from os.path import isdir
 
 def ex1(target_folder):
+    res = []
+    count = 0
     # your code goes here
-    pass
+    for f in os.listdir(target_folder):
+        full = target_folder + '/' + f
+        if os.path.isdir(full):
+            res.extend(ex1(full))
+        elif f.endswith('.txt'):
+            count += 1
+    res.append((target_folder, count))
+            
+    return sorted(res, key = lambda x : (-x[1], x[0]))
+
+    
+            
+
+            
+
+
+#print(ex1('ex1/A'))
+            
+            
+        
 
 
 
@@ -262,13 +335,37 @@ For example, if T is:
 
 The function returns: (5, 2, 4)
 '''
-
+import tree
 from tree import BinaryTree    
     
 def ex2(T):
     # your code goes here
-    pass
+    if T is None:
+        return (0, 0, 0)
 
+    
+    L1, S1, D1 = ex2(T.left)
+    L2, S2, D2 = ex2(T.right)
+    
+    L = L1 + L2
+    S = S1 + S2
+    D = D1 + D2
+    
+    if T.right is None and T.left is None:
+        L += 1
+    
+    elif T.right is None or T.left is None:
+        S += 1
+    
+    else:
+        D += 1
+    
+    
+    return L, S, D
+        
+        
+root = tree.BinaryTree.fromList([25, [8, None, [3, None, None]], [2, [9, None, None],[1, None, None]]])
+print(ex2(root))
 ###################################################################################
 if __name__ == '__main__':
     # Place your tests here

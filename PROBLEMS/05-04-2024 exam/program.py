@@ -21,9 +21,9 @@ IMPORTANT: set DEBUG = True in `grade.py` to improve debugging; but
 remember that recursion is tested (and graded) only if DEBUG = False
 """
 
-name       = "NAME"
-surname    = "SURNAME"
-student_id = "MATRICULATION NUMBER"
+name       = "Leila"
+surname    = "Zanoni"
+student_id = "2033176"
 
 
 # %% ----------------------------------- FUNC1 ------------------------- #
@@ -51,12 +51,21 @@ Result: {1: 'gggaaccff', 4: 'dddee'}
 
 def func1(D1,  D2):
     ## Write your code here
-    pass
+    d = {D2[v] : v  for v in D1 if v not in D2  for v in D2 if v not in D1}
+    
+
+
+    return d
+            
+        
+        
+    
+            
 
 ## Tests
-#D1 = {'aa': 1, 'bb': 2, 'cc': 1, 'ddd': 4}
-#D2 = {'bb': 4, 'ee': 4, 'ff': 1, 'ggg': 1}
-#print(func1(D1, D2))  # {1: 'gggaaccff', 4: 'dddee'}
+D1 = {'aa': 1, 'bb': 2, 'cc': 1, 'ddd': 4}
+D2 = {'bb': 4, 'ee': 4, 'ff': 1, 'ggg': 1}
+print(func1(D1, D2))  # {1: 'gggaaccff', 4: 'dddee'}
 
 
 # %% ----------------------------------- FUNC2 ------------------------- #
